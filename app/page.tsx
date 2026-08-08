@@ -2,6 +2,7 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Speakers from '@/components/Speakers';
+import Gallery from '@/components/Gallery';
 import Media from '@/components/Media';
 import Sponsors from '@/components/Sponsors';
 import CTA from '@/components/CTA';
@@ -15,6 +16,7 @@ export default function Home() {
         <Hero />
         <About />
         <Speakers />
+        <Gallery />
         <Media />
         <Sponsors />
         <CTA />

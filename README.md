@@ -25,23 +25,28 @@ components/
   Hero.tsx
   About.tsx
   Speakers.tsx       → randează lib/data.ts → speakers
-  Media.tsx          → randează lib/data.ts → mediaArticles
+  Gallery.tsx         → randează lib/data.ts → galleryPhotos, cu lightbox (client component)
+  Media.tsx           → randează lib/data.ts → mediaArticles (articole externe, link către sursă)
   Sponsors.tsx        → randează lib/data.ts → sponsors
   CTA.tsx
   Footer.tsx
   Reveal.tsx          → wrapper reutilizabil pentru animația scroll-reveal
 lib/
-  data.ts             → toate datele editabile (speakeri, articole media, sponsori) — un singur loc de update
+  data.ts             → toate datele editabile (speakeri, poze galerie, articole media, sponsori) — un singur loc de update
 public/images/
-  gallery/            → poze eveniment
+  gallery/            → poze eveniment (folosite integral în secțiunea Galerie)
   sponsors/           → sigle sponsori
 ```
 
 ## Editare conținut
 
-Tot conținutul variabil (nume speakeri, roluri, articole media, sponsori) e în `lib/data.ts`. Nu trebuie atinse componentele pentru modificări de text/imagini.
+Tot conținutul variabil (nume speakeri, roluri, poze galerie, articole media, sponsori) e în `lib/data.ts`. Nu trebuie atinse componentele pentru modificări de text/imagini.
 
-**Secțiunea Media** conține 4 carduri placeholder scrise pe baza conținutului real al evenimentului, dar nu sunt articole complete — înlocuiește `title`/`excerpt` din `mediaArticles` cu text real când e disponibil. Legăturile din carduri duc spre `/media/[slug]` — pagina de articol individual nu există încă (trebuie creată în `app/media/[slug]/page.tsx` când ai conținutul).
+**Galeria foto** (`galleryPhotos`) conține toate cele 12 poze din eveniment, afișate într-un grid cu lightbox (click pentru mărire, navigare cu săgeți/tastatură, Escape pentru închidere).
+
+**Secțiunea Media** (`mediaArticles`) conține 12 articole reale de presă despre eveniment, cu titlu, poză (preluată direct de pe site-ul sursă) și link către articolul original (`target="_blank"`). Imaginile Instagram/Facebook nu au putut fi extrase automat (platformele blochează accesul automat), deci acele 3 carduri folosesc o poză din galeria proprie ca fallback vizual — linkul duce totuși corect spre postarea reală.
+
+Pozele articolelor sunt încărcate direct de pe domeniile surselor (evz.ro, prosport.ro, agerpres.ro etc.) prin `next/image`, care le optimizează automat. Domeniile permise sunt listate în `next.config.mjs` → `images.remotePatterns`. Dacă adaugi articole de pe alte domenii, trebuie adăugat domeniul acolo.
 
 ## Deploy pe Vercel
 

@@ -10,6 +10,7 @@ export default function Footer() {
         <nav className="footer-nav" aria-label="Navigație footer">
           <a href="#despre">Despre</a>
           <a href="#speakeri">Speakeri</a>
+          <a href="#galerie">Galerie</a>
           <a href="#media">Media</a>
           <a href="#sponsori">Sponsori</a>
           <a href="mailto:office@sportsdiplomacy.ro">Contact</a>

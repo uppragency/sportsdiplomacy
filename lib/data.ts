@@ -32,53 +32,127 @@ export const speakers: Speaker[] = [
   { name: 'Camelia Potec', role: 'Vicepreședinte Comitetul Executiv COSR, Președinte Federația Română de Natație' },
 ];
 
-export type MediaArticle = {
-  slug: string;
-  image: string;
-  imageAlt: string;
-  date: string;
-  title: string;
-  excerpt: string;
-  featured?: boolean;
+export type GalleryPhoto = {
+  file: string;
+  alt: string;
 };
 
+export const galleryPhotos: GalleryPhoto[] = [
+  { file: 'poza1.jpg', alt: 'Sports Diplomacy Conference, Palatul Parlamentului' },
+  { file: 'poza2.jpg', alt: 'Sports Diplomacy Conference, Palatul Parlamentului' },
+  { file: 'poza3.jpg', alt: 'Sports Diplomacy Conference, Palatul Parlamentului' },
+  { file: 'poza4.jpg', alt: 'Sports Diplomacy Conference, Palatul Parlamentului' },
+  { file: 'poza5.jpg', alt: 'Sports Diplomacy Conference, Palatul Parlamentului' },
+  { file: 'poza6.jpg', alt: 'Sports Diplomacy Conference, Palatul Parlamentului' },
+  { file: 'poza7.jpg', alt: 'Sports Diplomacy Conference, Palatul Parlamentului' },
+  { file: 'poza8.jpg', alt: 'Expoziția 110 ani de Olimpism în România, Palatul Parlamentului' },
+  { file: 'poza9.jpg', alt: 'Sports Diplomacy Conference, Palatul Parlamentului' },
+  { file: 'poza10.jpg', alt: 'Sports Diplomacy Conference, Palatul Parlamentului' },
+  { file: 'poza11.jpg', alt: 'Ecran de deschidere Sports Diplomacy Conference' },
+  { file: 'poza12.jpg', alt: 'Fotografie de grup, Sports Diplomacy Conference' },
+];
+
+export type MediaArticle = {
+  title: string;
+  image: string;
+  sourceUrl: string;
+  publication?: string;
+  date?: string;
+};
+
+// Articole reale de presă despre Sports Diplomacy Conference.
+// Instagram/Facebook nu permit extragerea automată a pozei/titlului (robots blocked),
+// deci acele carduri folosesc o poză din galeria proprie ca fallback vizual.
 export const mediaArticles: MediaArticle[] = [
   {
-    slug: 'deschiderea-conferintei',
-    image: '/images/gallery/poza11.jpg',
-    imageAlt: 'Ecran de deschidere Sports Diplomacy Conference, Palatul Parlamentului',
-    date: '24 septembrie 2024',
-    title: 'Deschiderea conferinței la Palatul Parlamentului',
-    excerpt:
-      'Sports Diplomacy Conference a reunit lideri politici, diplomați și sportivi într-o singură discuție despre puterea sportului de a uni națiuni.',
-    featured: true,
+    title: 'Conferința „Sports Diplomacy”. Interviu cu președintele Institutului Sportiv Român',
+    image: 'https://evz.ro/wp-content/uploads/2024/09/Conferinta-Sports-Diplomacy-1200x771.jpeg',
+    sourceUrl: 'https://evz.ro/conferinta-sports-diplomacy-interviu-cu-presedintele-institutului-sportiv-roman.html',
+    publication: 'Evenimentul Zilei',
+    date: '25 septembrie 2024',
   },
   {
-    slug: 'expozitia-110-ani-olimpism',
-    image: '/images/gallery/poza8.jpg',
-    imageAlt: 'Expoziția 110 ani de Olimpism în România, Palatul Parlamentului',
+    title: '„Diplomația Sportivă”, conferință cu Elisabeta Lipă și Mihai Covaliu. Ce mesaj a transmis Nadia Comăneci',
+    image:
+      'https://media.prosport.ro/UKc_6JndgBsyypzm017fkvMAgZs=/1320x743/smart/filters:format(jpeg)/https%3A%2F%2Fwww.prosport.ro%2Fwp-content%2Fuploads%2F2024%2F09%2F%E2%80%9EDiplomatia-Sportiva-conferinta-cu-Rlisabeta-Lipa-si-Mihai-Covaliu.-Ce-mesaj-a-transmis-Nadia-Comaneci.jpg',
+    sourceUrl:
+      'https://www.prosport.ro/alte-sporturi/diplomatia-sportiva-conferinta-cu-elisabeta-lipa-si-mihai-covaliu-ce-mesaj-a-transmis-nadia-comaneci-19993952',
+    publication: 'Prosport',
     date: '24 septembrie 2024',
-    title: 'Expoziția „110 ani de Olimpism în România”',
-    excerpt:
-      'O expoziție de fotografie dedicată unui secol de performanță sportivă românească a însoțit conferința pe tot parcursul zilei.',
   },
   {
-    slug: 'diplomati-si-oficiali',
-    image: '/images/gallery/poza3.jpg',
-    imageAlt: 'Diplomați și oficiali în cadrul Sports Diplomacy Conference',
+    title: 'ICI București a participat la Conferința „Sports Diplomacy”',
+    image: 'https://ici.ro/media/images/sports-diplomacy.original.jpg',
+    sourceUrl: 'https://ici.ro/ro/evenimente/ici-bucuresti-a-participat-la-conferinta-sports-diplomacy/',
+    publication: 'ICI București',
     date: '24 septembrie 2024',
-    title: 'Diplomați și oficiali, la aceeași masă',
-    excerpt:
-      'Corpul diplomatic acreditat la București s-a alăturat reprezentanților federațiilor sportive naționale și administrației publice centrale.',
   },
   {
-    slug: 'sportivi-si-campioni',
-    image: '/images/gallery/poza6.jpg',
-    imageAlt: 'Sportivi și campioni în cadrul Sports Diplomacy Conference',
+    title: 'Sportul poate aduce Republica Moldova mai aproape de Europa. Conferința Sports Diplomacy',
+    image: 'https://evz.ro/wp-content/uploads/2024/09/4-Sports-diplomacy-1200x783.jpg',
+    sourceUrl:
+      'https://evz.ro/sportul-poate-aduce-republica-moldova-mai-aproape-de-europa-conferinta-sports-diplomacy.html',
+    publication: 'Evenimentul Zilei',
+    date: '25 septembrie 2024',
+  },
+  {
+    title:
+      'The Participation of the President of the Foreign Affairs Committee in the Romanian Senate, Senator Titus Corlățean, at the "Sports Diplomacy" Conference',
+    image: 'https://nineoclock.ro/wp-content/uploads/2024/09/sports-diplomacy-coperta-.jpeg',
+    sourceUrl:
+      'https://nineoclock.ro/the-participation-of-the-president-of-the-foreign-affairs-committee-in-the-romanian-senate-senator-titus-corlatean-at-the-sports-diplomacy-conference/',
+    publication: 'Nine O\u2019Clock',
+    date: '30 septembrie 2024',
+  },
+  {
+    title: 'Sorin Mierlea, Președintele InfoCons, participă la Conferința „Diplomația Sportivă”',
+    image: 'https://infocons.ro/wp-content/uploads/2024/09/SORIN-MIERLEA-Presedinte-InfoCons-1024x1024.webp',
+    sourceUrl:
+      'https://infocons.ro/stiri-scurte/sorin-mierlea-presedintele-infocons-participa-la-conferinta-diplomatia-sportiva/',
+    publication: 'InfoCons',
     date: '24 septembrie 2024',
-    title: 'Sportivi și campioni în dialog cu decidenții',
-    excerpt:
-      'De la gimnastică la tenis și esports, sportul românesc a avut o voce directă în discuțiile despre diplomație sportivă.',
+  },
+  {
+    title: 'Adrian Socaciu: Conferința „Sports Diplomacy”',
+    image: 'https://www.oranoua.ro/wp-content/uploads/2019/06/Adrian-Socaciu-300x200.jpg',
+    sourceUrl: 'https://www.oranoua.ro/adrian-socaciu-conferinta-sports-diplomacy/',
+    publication: 'Ora Nouă',
+    date: '25 septembrie 2024',
+  },
+  {
+    title: 'Nadia Comăneci, la conferința Diplomația Sportivă: Mulți sportivi devin diplomați extraordinari fără să știe',
+    image: 'https://foto.agerpres.ro/storage/watermark/17672880.jpg',
+    sourceUrl:
+      'https://agerpres.ro/sport/2024/09/24/nadia-comaneci-la-conferinta-diplomatia-sportiva-multi-sportivi-devin-diplomati-extraordinari-fara-s--1359746',
+    publication: 'Agerpres',
+    date: '24 septembrie 2024',
+  },
+  {
+    title: 'Sports Diplomacy, conferința dedicată sportivilor. Nadia Comăneci: Cei mai mulți dintre sportivi devin, fără să știe, diplomați',
+    image: 'https://evz.ro/wp-content/uploads/2024/08/MzJjNzgyYjVkMDEzZGQ4ZjAzZDc5YWE5ZmQ5.thumb_.jpg',
+    sourceUrl:
+      'https://evz.ro/sports-diplomacy-conferinta-dedicata-sportivilor-nadia-comaneci-cei-mai-multi-dintre-sportivi-devin-fara-sa-stie-diplomati.html',
+    publication: 'Evenimentul Zilei',
+    date: '24 septembrie 2024',
+  },
+  {
+    title: 'Sports Diplomacy Conference — postare Instagram',
+    image: '/images/gallery/poza1.jpg',
+    sourceUrl: 'https://www.instagram.com/p/DY2IPeXDEsK/',
+    publication: 'Instagram',
+  },
+  {
+    title: 'Sports Diplomacy Conference — postare Instagram',
+    image: '/images/gallery/poza5.jpg',
+    sourceUrl: 'https://www.instagram.com/p/DY3wMOViCZ0/',
+    publication: 'Instagram',
+  },
+  {
+    title: 'Aspen Institute România salută inițiativa Sports Diplomacy',
+    image: '/images/gallery/poza9.jpg',
+    sourceUrl:
+      'https://www.facebook.com/AspenInstituteRomania/posts/salut%C4%83m-ini%C8%9Biativa-lui-%F0%9D%90%93%F0%9D%90%AE%F0%9D%90%9D%F0%9D%90%A8%F0%9D%90%AB-%F0%9D%90%8E%F0%9D%90%9A%F0%9D%90%A7%F0%9D%90%9C%F0%9D%90%9E%F0%9D%90%9A-membru-al-aspen-society-of-fellows-alumni-as/958196973016052/',
+    publication: 'Facebook — Aspen Institute România',
   },
 ];
 
