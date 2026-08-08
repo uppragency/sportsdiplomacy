@@ -32,7 +32,6 @@ export default function Header() {
     <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
       <div className="header-inner">
         <a href="#top" className="logo">
-          <span className="logo-mark" aria-hidden="true">SD</span>
           <span className="logo-word">Sports<em>Diplomacy</em></span>
         </a>
 

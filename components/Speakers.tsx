@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Reveal from './Reveal';
 import { speakers } from '@/lib/data';
@@ -16,6 +16,11 @@ function initials(name: string) {
 
 export default function Speakers() {
   const trackRef = useRef<HTMLUListElement>(null);
+  const [index, setIndex] = useState(0);
+  const [barWidthPct, setBarWidthPct] = useState(8);
+  const [barOffsetPct, setBarOffsetPct] = useState(0);
+  const [atStart, setAtStart] = useState(true);
+  const [atEnd, setAtEnd] = useState(false);
 
   const scrollByCard = (dir: 1 | -1) => {
     const track = trackRef.current;
@@ -24,6 +29,35 @@ export default function Speakers() {
     const cardWidth = card ? card.getBoundingClientRect().width : 280;
     track.scrollBy({ left: dir * (cardWidth + 20), behavior: 'smooth' });
   };
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const update = () => {
+      const card = track.querySelector('li');
+      const cardWidth = card ? card.getBoundingClientRect().width + 20 : 280;
+      const i = Math.min(Math.max(Math.round(track.scrollLeft / cardWidth), 0), speakers.length - 1);
+      setIndex(i);
+
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      const widthPct = Math.max(8, (track.clientWidth / track.scrollWidth) * 100);
+      const travelPct = 100 - widthPct;
+      const scrollPct = maxScroll > 0 ? track.scrollLeft / maxScroll : 0;
+      setBarWidthPct(widthPct);
+      setBarOffsetPct(scrollPct * travelPct);
+      setAtStart(track.scrollLeft <= 4);
+      setAtEnd(track.scrollLeft >= maxScroll - 4);
+    };
+
+    update();
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    return () => {
+      track.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
+  }, []);
 
   return (
     <section className="section section-dark" id="speakeri">
@@ -35,22 +69,29 @@ export default function Speakers() {
           </div>
 
           <div className="carousel-nav">
-            <button
-              type="button"
-              className="carousel-nav-btn"
-              onClick={() => scrollByCard(-1)}
-              aria-label="Speakerul anterior"
-            >
-              ‹
-            </button>
-            <button
-              type="button"
-              className="carousel-nav-btn"
-              onClick={() => scrollByCard(1)}
-              aria-label="Speakerul următor"
-            >
-              ›
-            </button>
+            <span className="carousel-counter">
+              {String(index + 1).padStart(2, '0')} / {speakers.length}
+            </span>
+            <div className="carousel-nav-btns">
+              <button
+                type="button"
+                className="carousel-nav-btn"
+                onClick={() => scrollByCard(-1)}
+                disabled={atStart}
+                aria-label="Speakerul anterior"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                className="carousel-nav-btn"
+                onClick={() => scrollByCard(1)}
+                disabled={atEnd}
+                aria-label="Speakerul următor"
+              >
+                ›
+              </button>
+            </div>
           </div>
         </div>
 
@@ -80,6 +121,12 @@ export default function Speakers() {
               </li>
             ))}
           </ul>
+          <div className="carousel-progress">
+            <div
+              className="carousel-progress-bar"
+              style={{ width: `${barWidthPct}%`, marginLeft: `${barOffsetPct}%` }}
+            />
+          </div>
         </Reveal>
       </div>
     </section>

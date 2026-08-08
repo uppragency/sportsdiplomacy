@@ -35,22 +35,46 @@ export default function About() {
           </div>
         </Reveal>
 
-        <Reveal as="dl" className="stat-row">
-          <div className="stat">
-            <dt>Locație</dt>
-            <dd>Palatul Parlamentului</dd>
+        <Reveal className="stat-cards">
+          <div className="stat-card">
+            <div className="stat-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z" />
+                <circle cx="12" cy="9" r="2.4" />
+              </svg>
+            </div>
+            <p className="stat-card-value">Palatul Parlamentului</p>
+            <p className="stat-card-label">Locație</p>
           </div>
-          <div className="stat">
-            <dt>Dată</dt>
-            <dd>24 septembrie 2024</dd>
+          <div className="stat-card">
+            <div className="stat-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <rect x="3.5" y="5" width="17" height="15.5" rx="2" />
+                <path d="M8 3v4M16 3v4M3.5 10h17" />
+              </svg>
+            </div>
+            <p className="stat-card-value">24 septembrie 2024</p>
+            <p className="stat-card-label">Dată</p>
           </div>
-          <div className="stat">
-            <dt>Speakeri și moderatori</dt>
-            <dd>26</dd>
+          <div className="stat-card">
+            <div className="stat-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <path d="M12 14a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" />
+                <path d="M6 21c0-3 2.7-5 6-5s6 2 6 5" />
+              </svg>
+            </div>
+            <p className="stat-card-value">26</p>
+            <p className="stat-card-label">Speakeri și moderatori</p>
           </div>
-          <div className="stat">
-            <dt>Context sportiv 2024</dt>
-            <dd>EURO · Jocurile Olimpice · Esports</dd>
+          <div className="stat-card">
+            <div className="stat-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                <path d="M8 4h8l-1 6a3 3 0 0 1-6 0L8 4Z" />
+                <path d="M12 13v4M9 21h6" />
+              </svg>
+            </div>
+            <p className="stat-card-value">EURO · JO · Esports</p>
+            <p className="stat-card-label">Context sportiv 2024</p>
           </div>
         </Reveal>
       </div>

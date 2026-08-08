@@ -17,19 +17,20 @@ Deschide `http://localhost:3000`.
 
 ```
 app/
-  layout.tsx      → fonturi (Fraunces / Inter / IBM Plex Mono), metadata SEO
+  layout.tsx      → fonturi (Roboto / Roboto Slab / Roboto Mono), metadata SEO
   page.tsx         → asamblează secțiunile
   globals.css       → toate design tokens + stiluri (culorile clientului: #0A021E / #1D5199 / #153872)
 components/
   Header.tsx        → nav sticky + meniu mobil (client component)
-  Hero.tsx
-  About.tsx
-  Speakers.tsx       → randează lib/data.ts → speakers
+  Hero.tsx           → Ken Burns pe fundal + intrare eșalonată a textului
+  About.tsx          → include stat-cards (fapte cheie, carduri elevate cu iconițe)
+  Speakers.tsx       → carusel cu contor (01/26) + bară de progres (client component)
   Gallery.tsx         → randează lib/data.ts → galleryPhotos, cu lightbox (client component)
   Media.tsx           → randează lib/data.ts → mediaArticles (articole externe, link către sursă)
-  Sponsors.tsx        → randează lib/data.ts → sponsors
-  CTA.tsx
-  Footer.tsx
+  Institutions.tsx     → instituții organizatoare (placeholder text, fără sigle reale încă)
+  Sponsors.tsx        → bandă auto-scroll infinită, pauză la hover
+  CTA.tsx              → include textură de fundal (puncte discrete)
+  Footer.tsx           → footer editorial, 3 coloane + siglă mare estompată
   Reveal.tsx          → wrapper reutilizabil pentru animația scroll-reveal
 lib/
   data.ts             → toate datele editabile (speakeri, poze galerie, articole media, sponsori) — un singur loc de update

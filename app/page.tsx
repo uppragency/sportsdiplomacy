@@ -4,6 +4,7 @@ import About from '@/components/About';
 import Speakers from '@/components/Speakers';
 import Gallery from '@/components/Gallery';
 import Media from '@/components/Media';
+import Institutions from '@/components/Institutions';
 import Sponsors from '@/components/Sponsors';
 import CTA from '@/components/CTA';
 import Footer from '@/components/Footer';
@@ -18,6 +19,7 @@ export default function Home() {
         <Speakers />
         <Gallery />
         <Media />
+        <Institutions />
         <Sponsors />
         <CTA />
       </main>
