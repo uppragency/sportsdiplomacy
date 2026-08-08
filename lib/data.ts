@@ -1,6 +1,7 @@
 export type Speaker = {
   name: string;
   role: string;
+  photo?: string; // /images/speakers/nume-fisier.jpg — dacă lipsește, se afișează un placeholder cu inițiale
 };
 
 export const speakers: Speaker[] = [
