@@ -107,7 +107,7 @@ h1, h2, h3, p, dl, dd, dt { margin: 0; }
 .body-lg {
   font-family: var(--font-display), 'Roboto Slab', serif;
   font-weight: 400;
-  font-size: clamp(19px, 2vw, 23px);
+  font-size: 20px;
   line-height: 1.5;
   color: var(--ink);
   margin-top: 24px;
@@ -411,7 +411,7 @@ h1, h2, h3, p, dl, dd, dt { margin: 0; }
 .about-figure {
   border-radius: var(--radius-lg);
   overflow: hidden;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 1 / 1;
   position: relative;
 }
 .about-figure img { width: 100%; height: 100%; object-fit: cover; }
