@@ -34,8 +34,6 @@
 *, *::before, *::after { box-sizing: border-box; }
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
-  max-width: 100%;
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -45,7 +43,7 @@ html {
 body {
   margin: 0;
   overflow-x: hidden;
-  max-width: 100%;
+  max-width: 100vw;
   font-family: var(--font-body), -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--ink);
   background: var(--white);
@@ -195,18 +193,20 @@ h1, h2, h3, p, dl, dd, dt { margin: 0; }
 }
 .logo-word em { font-style: normal; font-weight: 300; opacity: 0.72; }
 
-.main-nav {
+.main-nav-desktop {
   display: flex;
   align-items: center;
   gap: 36px;
 }
-.main-nav a {
+.main-nav-desktop a,
+.main-nav-mobile a {
   font-size: 14.5px;
   font-weight: 500;
   color: var(--on-dark-soft);
   transition: color 0.2s ease;
 }
-.main-nav a:hover { color: var(--white); }
+.main-nav-desktop a:hover,
+.main-nav-mobile a:hover { color: var(--white); }
 .nav-cta {
   padding: 9px 20px;
   border: 1.5px solid rgba(255,255,255,0.45);
@@ -214,6 +214,11 @@ h1, h2, h3, p, dl, dd, dt { margin: 0; }
   color: var(--white) !important;
 }
 .nav-cta:hover { background: var(--white); color: var(--dark) !important; }
+
+/* Overlay-ul mobil e ascuns și nefixat pe desktop implicit */
+.main-nav-mobile {
+  display: none;
+}
 
 .nav-toggle {
   display: none;
@@ -649,34 +654,51 @@ h1, h2, h3, p, dl, dd, dt { margin: 0; }
 }
 
 /* ==========================================================================
-   Instituții organizatoare
+   Instituții organizatoare — carduri logo uniforme
    ========================================================================== */
-.institutions-row {
+.institution-grid {
   margin-top: 44px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+}
+.institution-tile {
   display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-}
-.institution-badge {
-  display: inline-flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
-  padding: 12px 20px;
+  gap: 14px;
+  text-align: center;
+}
+.institution-logo-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-md);
+  background: var(--paper);
   border: 1px solid var(--paper-line);
-  border-radius: 999px;
-  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 22px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
-.institution-badge .dot {
-  width: 7px; height: 7px;
-  border-radius: 50%;
-  background: var(--primary);
-  flex-shrink: 0;
+.institution-tile:hover .institution-logo-box {
+  border-color: rgba(29,81,153,0.3);
+  box-shadow: 0 12px 28px rgba(10,2,30,0.07);
+  transform: translateY(-3px);
 }
-.institution-badge span:last-child {
-  font-size: 13.5px;
+.institution-placeholder {
+  font-family: var(--font-mono), monospace;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+.institution-name {
+  font-size: 12.5px;
   font-weight: 600;
   color: var(--ink);
-  white-space: nowrap;
+  line-height: 1.35;
 }
 
 /* ==========================================================================
@@ -919,6 +941,7 @@ h1, h2, h3, p, dl, dd, dt { margin: 0; }
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
   .about-figure { aspect-ratio: 16/9; order: -1; }
   .gallery-grid { grid-template-columns: repeat(3, 1fr); }
+  .institution-grid { grid-template-columns: repeat(3, 1fr); }
   .media-grid { grid-template-columns: repeat(2, 1fr); }
   .media-card-feature { grid-column: span 2; }
 }
@@ -926,7 +949,10 @@ h1, h2, h3, p, dl, dd, dt { margin: 0; }
 @media (max-width: 760px) {
   :root { --header-h: 64px; }
 
-  .main-nav {
+  .main-nav-desktop { display: none; }
+
+  .main-nav-mobile {
+    display: flex;
     position: fixed;
     inset: 64px 0 0 0;
     background: rgba(10,2,30,0.98);
@@ -937,10 +963,11 @@ h1, h2, h3, p, dl, dd, dt { margin: 0; }
     gap: 28px;
     transform: translateX(100%);
     transition: transform 0.35s ease;
+    z-index: 99;
   }
-  .main-nav.is-open { transform: translateX(0); }
-  .main-nav a { font-size: 20px; }
-  .nav-cta { padding: 12px 28px; }
+  .main-nav-mobile.is-open { transform: translateX(0); }
+  .main-nav-mobile a { font-size: 20px; }
+  .main-nav-mobile .nav-cta { padding: 12px 28px; }
   .nav-toggle { display: flex; }
 
   .hero-content { padding-top: calc(var(--header-h) + 32px); }
@@ -957,6 +984,8 @@ h1, h2, h3, p, dl, dd, dt { margin: 0; }
   .speaker-item { width: 208px; }
 
   .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .institution-grid { grid-template-columns: repeat(2, 1fr); }
+  .institution-name { font-size: 12px; }
   .lightbox-nav { width: 40px; height: 40px; font-size: 20px; }
   .lightbox-prev { left: 8px; }
   .lightbox-next { right: 8px; }
