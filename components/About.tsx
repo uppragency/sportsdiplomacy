@@ -1,12 +1,14 @@
 import Image from 'next/image';
 import Reveal from './Reveal';
+import AnimatedNumber from './AnimatedNumber';
 
 export default function About() {
   return (
-    <section className="section section-light" id="despre">
+    <section className="section section-light textured" id="despre">
       <div className="container">
         <Reveal className="about-grid">
           <div className="about-text">
+            <div className="mini-badge"><span className="dot"></span> Ediția 2024</div>
             <p className="eyebrow">Despre eveniment</p>
             <h2 className="section-title">
               O întâlnire între diplomație și sport, la cel mai înalt nivel.
@@ -63,7 +65,7 @@ export default function About() {
                 <path d="M6 21c0-3 2.7-5 6-5s6 2 6 5" />
               </svg>
             </div>
-            <p className="stat-card-value">26</p>
+            <p className="stat-card-value"><AnimatedNumber target={26} /></p>
             <p className="stat-card-label">Speakeri și moderatori</p>
           </div>
           <div className="stat-card">

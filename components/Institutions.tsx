@@ -22,7 +22,7 @@ function initials(name: string) {
 
 export default function Institutions() {
   return (
-    <section className="section section-light" id="institutii">
+    <section className="section section-light textured" id="institutii">
       <div className="container">
         <p className="eyebrow">Sub egida</p>
         <h2 className="section-title">Instituții organizatoare și parteneri oficiali</h2>

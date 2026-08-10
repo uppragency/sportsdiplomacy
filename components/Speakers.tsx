@@ -14,6 +14,16 @@ function initials(name: string) {
   return (first + last).toUpperCase();
 }
 
+function slugify(name: string) {
+  return name
+    .toLowerCase()
+    .replace(/^(ambasador|dr\.?|e\.s\.?)\s*/gi, '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+}
+
 export default function Speakers() {
   const trackRef = useRef<HTMLUListElement>(null);
   const [index, setIndex] = useState(0);
@@ -98,7 +108,7 @@ export default function Speakers() {
         <Reveal>
           <ul className="speaker-carousel" ref={trackRef}>
             {speakers.map((speaker) => (
-              <li className="speaker-item" key={speaker.name}>
+              <li className="speaker-item" id={`speaker-${slugify(speaker.name)}`} key={speaker.name}>
                 <div className="speaker-avatar">
                   {speaker.photo ? (
                     <Image
@@ -117,6 +127,7 @@ export default function Speakers() {
                 <div className="speaker-info">
                   <span className="speaker-name">{speaker.name}</span>
                   <span className="speaker-role">{speaker.role}</span>
+                  <span className="sp-cat-tag">{speaker.category}</span>
                 </div>
               </li>
             ))}

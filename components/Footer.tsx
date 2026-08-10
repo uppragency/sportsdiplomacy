@@ -40,6 +40,17 @@ export default function Footer() {
 
         <div className="footer-v2-bottom">
           <p>© 2024 Sports Diplomacy. Palatul Parlamentului, București.</p>
+          <p>
+            Website by{' '}
+            <a
+              href="https://www.uppr.agency/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '2px' }}
+            >
+              UPPR Agency
+            </a>
+          </p>
         </div>
       </div>
     </footer>
