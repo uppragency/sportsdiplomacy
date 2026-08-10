@@ -1,26 +1,9 @@
-'use client';
-
-import { useRef } from 'react';
 import Image from 'next/image';
 
 export default function Hero() {
-  const mediaRef = useRef<HTMLDivElement>(null);
-
-  // Idee 8: parallax discret pe hero la mișcarea mouse-ului (doar desktop, unde hover e disponibil)
-  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
-    if (!mediaRef.current || window.matchMedia('(hover: none)').matches) return;
-    const x = (e.clientX / window.innerWidth - 0.5) * 14;
-    const y = (e.clientY / window.innerHeight - 0.5) * 14;
-    mediaRef.current.style.transform = `translate(${x}px, ${y}px)`;
-  };
-
-  const handleMouseLeave = () => {
-    if (mediaRef.current) mediaRef.current.style.transform = 'translate(0, 0)';
-  };
-
   return (
-    <section className="hero" id="top" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}>
-      <div className="hero-media" ref={mediaRef}>
+    <section className="hero" id="top">
+      <div className="hero-media">
         <Image
           src="/images/gallery/poza4.jpg"
           alt="Sesiune plenară Sports Diplomacy Conference în Sala Drepturilor Omului, Palatul Parlamentului"

@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Reveal from './Reveal';
 import { mediaArticles } from '@/lib/data';
 
-const PER_BATCH = 6; // 2 rânduri x 3 coloane
+const PER_BATCH = 3; // 1 rând x 3 coloane
 
 export default function Media() {
   const [shown, setShown] = useState(Math.min(PER_BATCH, mediaArticles.length));

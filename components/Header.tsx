@@ -20,6 +20,9 @@ function slugify(name: string) {
     .replace(/(^-|-$)/g, '');
 }
 
+// Comutatorul RO/EN e ascuns momentan (pus pe hold) — pune pe true ca să-l readuci.
+const SHOW_LANG_TOGGLE = false;
+
 type SearchItem = { label: string; sub: string; tag: 'Speaker' | 'Media'; targetId: string; slug?: string };
 
 export default function Header() {
@@ -129,7 +132,7 @@ export default function Header() {
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <button
-              className="search-trigger"
+              className="search-trigger search-trigger-desktop"
               aria-label="Căutare"
               onClick={() => setSearchOpen(true)}
             >
@@ -139,10 +142,12 @@ export default function Header() {
               </svg>
             </button>
 
-            <div className="lang-toggle" role="group" aria-label="Limbă">
-              <button className={lang === 'ro' ? 'is-active' : ''} onClick={() => setLang('ro')}>RO</button>
-              <button className={lang === 'en' ? 'is-active' : ''} onClick={() => setLang('en')}>EN</button>
-            </div>
+            {SHOW_LANG_TOGGLE && (
+              <div className="lang-toggle" role="group" aria-label="Limbă">
+                <button className={lang === 'ro' ? 'is-active' : ''} onClick={() => setLang('ro')}>RO</button>
+                <button className={lang === 'en' ? 'is-active' : ''} onClick={() => setLang('en')}>EN</button>
+              </div>
+            )}
 
             <a href="#contact" className="nav-cta nav-cta-desktop">Contact</a>
 
@@ -170,10 +175,12 @@ export default function Header() {
             {link.label}
           </a>
         ))}
-        <div className="lang-toggle" role="group" aria-label="Limbă" style={{ display: 'flex' }}>
-          <button className={lang === 'ro' ? 'is-active' : ''} onClick={() => setLang('ro')}>RO</button>
-          <button className={lang === 'en' ? 'is-active' : ''} onClick={() => setLang('en')}>EN</button>
-        </div>
+        {SHOW_LANG_TOGGLE && (
+          <div className="lang-toggle" role="group" aria-label="Limbă" style={{ display: 'flex' }}>
+            <button className={lang === 'ro' ? 'is-active' : ''} onClick={() => setLang('ro')}>RO</button>
+            <button className={lang === 'en' ? 'is-active' : ''} onClick={() => setLang('en')}>EN</button>
+          </div>
+        )}
         <a href="#contact" className="nav-cta" onClick={() => setNavOpen(false)}>
           Contact
         </a>
