@@ -168,16 +168,16 @@ h1, h2, h3, p, dl, dd, dt { margin: 0; }
   max-width: 1200px;
   z-index: 100;
   border-radius: 999px;
-  background: rgba(43, 78, 153, 0.32);
+  background: rgba(10, 2, 30, 0.55);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 10px 34px rgba(10, 2, 30, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 34px rgba(10, 2, 30, 0.35);
   transition: background 0.35s ease, box-shadow 0.35s ease, top 0.35s ease;
 }
 .site-header.is-scrolled {
-  background: rgba(43, 78, 153, 0.5);
-  box-shadow: 0 14px 40px rgba(10, 2, 30, 0.4);
+  background: rgba(10, 2, 30, 0.78);
+  box-shadow: 0 14px 40px rgba(10, 2, 30, 0.5);
   top: 14px;
 }
 
@@ -756,9 +756,24 @@ h1, h2, h3, p, dl, dd, dt { margin: 0; }
    CTA / Contact
    ========================================================================== */
 .cta-section { text-align: center; position: relative; overflow: hidden; }
+.cta-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.cta-media img {
+  filter: saturate(0.85);
+}
+.cta-scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(165deg, rgba(10,2,30,0.94) 0%, rgba(21,56,114,0.90) 130%);
+}
 .cta-texture {
   position: absolute;
   inset: 0;
+  z-index: 0;
   opacity: 0.05;
   background-image: radial-gradient(circle, #fff 1px, transparent 1px);
   background-size: 22px 22px;

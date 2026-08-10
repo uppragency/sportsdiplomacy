@@ -1,8 +1,19 @@
+import Image from 'next/image';
 import Reveal from './Reveal';
 
 export default function CTA() {
   return (
     <section className="section section-dark cta-section" id="contact">
+      <div className="cta-media" aria-hidden="true">
+        <Image
+          src="/images/cta/backdrop.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          style={{ objectFit: 'cover' }}
+        />
+        <div className="cta-scrim"></div>
+      </div>
       <div className="cta-texture" aria-hidden="true"></div>
       <div className="container">
         <Reveal className="cta-inner">
