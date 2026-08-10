@@ -521,12 +521,13 @@ h1, h2, h3, p, dl, dd, dt { margin: 0; }
 
 .speaker-item {
   flex: 0 0 auto;
-  width: clamp(220px, 26vw, 264px);
+  width: 200px;
   scroll-snap-align: start;
   background: rgba(255,255,255,0.03);
   border: 1px solid var(--dark-line);
   border-radius: var(--radius-md);
-  overflow: hidden;
+  padding: 26px 18px 20px;
+  text-align: center;
   transition: border-color 0.25s ease, transform 0.25s ease;
 }
 .speaker-item:hover {
@@ -534,25 +535,28 @@ h1, h2, h3, p, dl, dd, dt { margin: 0; }
   transform: translateY(-3px);
 }
 
-.speaker-photo {
+.speaker-avatar {
   position: relative;
-  width: 100%;
-  aspect-ratio: 1 / 1;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 16px;
   background: linear-gradient(150deg, var(--primary) 0%, var(--secondary) 100%);
+  border: 2px solid rgba(255,255,255,0.2);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .speaker-initials {
   font-family: var(--font-display), 'Roboto Slab', serif;
-  font-size: 40px;
+  font-size: 26px;
   font-weight: 500;
   color: rgba(255,255,255,0.85);
   letter-spacing: 0.02em;
 }
 
 .speaker-info {
-  padding: 18px 20px 22px;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -560,16 +564,17 @@ h1, h2, h3, p, dl, dd, dt { margin: 0; }
 
 .speaker-name {
   font-family: var(--font-display), 'Roboto Slab', serif;
-  font-size: 17px;
+  font-size: 15px;
   color: var(--white);
   line-height: 1.3;
   display: block;
 }
 .speaker-role {
-  font-size: 13.5px;
-  line-height: 1.5;
+  font-size: 11.5px;
+  line-height: 1.45;
   color: var(--on-dark-soft);
   display: block;
+  margin-top: 2px;
 }
 
 /* ==========================================================================
@@ -661,7 +666,6 @@ h1, h2, h3, p, dl, dd, dt { margin: 0; }
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 18px;
-  justify-items: center;
 }
 .institution-tile {
   display: flex;
@@ -672,9 +676,9 @@ h1, h2, h3, p, dl, dd, dt { margin: 0; }
 }
 .institution-logo-box {
   position: relative;
-  width: 96px;
-  height: 96px;
-  border-radius: 50%;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-md);
   background: var(--paper);
   border: 1px solid var(--paper-line);
   display: flex;

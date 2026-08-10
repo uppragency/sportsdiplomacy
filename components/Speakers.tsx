@@ -99,14 +99,14 @@ export default function Speakers() {
           <ul className="speaker-carousel" ref={trackRef}>
             {speakers.map((speaker) => (
               <li className="speaker-item" key={speaker.name}>
-                <div className="speaker-photo">
+                <div className="speaker-avatar">
                   {speaker.photo ? (
                     <Image
                       src={speaker.photo}
                       alt={speaker.name}
                       fill
-                      sizes="280px"
-                      style={{ objectFit: 'contain' }}
+                      sizes="84px"
+                      style={{ objectFit: 'cover' }}
                     />
                   ) : (
                     <span className="speaker-initials" aria-hidden="true">
