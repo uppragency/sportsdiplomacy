@@ -396,7 +396,13 @@ h1, h2, h3, p, dl, dd, dt { margin: 0; }
 .section-light { background: var(--white); }
 .section-muted { background: var(--paper); }
 .section-dark {
-  background: linear-gradient(165deg, var(--dark) 0%, var(--secondary) 130%);
+  background: linear-gradient(165deg, var(--dark) 0%, var(--secondary) 60%, var(--dark) 130%);
+  background-size: 220% 220%;
+  animation: slow-gradient-drift 42s ease-in-out infinite alternate;
+}
+@keyframes slow-gradient-drift {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
 }
 
 /* ==========================================================================
@@ -858,11 +864,28 @@ h1, h2, h3, p, dl, dd, dt { margin: 0; }
   border-top: 1px solid var(--dark-line);
   position: relative;
   display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.footer-v2-bottom-row {
+  display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 8px;
 }
+.footer-legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.footer-legal-links a {
+  font-size: 12px;
+  color: rgba(243,244,248,0.42);
+  text-decoration: none;
+}
+.footer-legal-links a:hover { color: var(--on-dark-soft); text-decoration: underline; }
+
 .footer-v2-bottom p {
   font-size: 12.5px;
   color: rgba(243,244,248,0.42);
@@ -1201,7 +1224,7 @@ html { scrollbar-color: var(--primary) rgba(10,2,30,0.08); scrollbar-width: thin
 
 /* Idee 24: secțiune Ediții */
 .edition-single {
-  max-width: 380px; margin: 40px auto 0; border: 1px solid var(--primary); border-radius: var(--radius-md);
+  max-width: 380px; margin: 40px 0 0; border: 1px solid var(--primary); border-radius: var(--radius-md);
   padding: 28px 24px; background: linear-gradient(165deg, rgba(29,81,153,0.05), transparent); text-align: left;
 }
 .edition-single .edition-year { font-family: var(--font-display), 'Roboto Slab', serif; font-size: 30px; color: var(--ink); }
@@ -1283,4 +1306,159 @@ html { scrollbar-color: var(--primary) rgba(10,2,30,0.08); scrollbar-width: thin
 /* Pe mobil, titlurile din Media pe maxim 2 rânduri (nu 3) */
 @media (max-width: 760px) {
   .media-card-body h3 { -webkit-line-clamp: 2; }
+}
+
+/* Buton de căutare în meniul hamburger mobil */
+.mobile-search-trigger {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 999px;
+  padding: 12px 24px;
+  color: #fff;
+  font-family: var(--font-body), sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+.mobile-search-trigger svg { width: 17px; height: 17px; flex-shrink: 0; }
+
+/* ==========================================================================
+   Pagini legale (Confidențialitate, Termeni, Cookie-uri)
+   ========================================================================== */
+.legal-page { padding-top: 160px; padding-bottom: 100px; min-height: 60vh; }
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono), monospace;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  margin-bottom: 20px;
+}
+.breadcrumb a { color: var(--primary); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb-sep { opacity: 0.5; }
+.breadcrumb-current { color: var(--ink-soft); }
+
+.back-to-site {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 32px;
+  text-decoration: none;
+}
+.back-to-site svg { width: 16px; height: 16px; }
+.back-to-site:hover { text-decoration: underline; }
+
+.legal-title {
+  font-family: var(--font-display), 'Roboto Slab', serif;
+  font-weight: 500;
+  font-size: clamp(28px, 3.4vw, 40px);
+  color: var(--ink);
+  max-width: 24ch;
+}
+.legal-updated {
+  margin-top: 10px;
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+.legal-body {
+  margin-top: 40px;
+  max-width: 72ch;
+}
+.legal-body h2 {
+  font-family: var(--font-display), 'Roboto Slab', serif;
+  font-weight: 500;
+  font-size: 21px;
+  color: var(--ink);
+  margin-top: 40px;
+  margin-bottom: 14px;
+}
+.legal-body h2:first-child { margin-top: 0; }
+.legal-body p {
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  margin-bottom: 16px;
+}
+.legal-body ul {
+  margin: 0 0 16px;
+  padding-left: 22px;
+}
+.legal-body li {
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: var(--ink-soft);
+  list-style: disc;
+  margin-bottom: 8px;
+}
+.legal-body a { color: var(--primary); text-decoration: underline; text-underline-offset: 2px; }
+.legal-body strong { color: var(--ink); font-weight: 600; }
+
+@media (max-width: 760px) {
+  .legal-page { padding-top: 120px; }
+}
+
+/* ==========================================================================
+   Pagina 404
+   ========================================================================== */
+.not-found-section {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding-top: 140px;
+}
+.not-found-inner {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.not-found-seal {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 32px;
+  animation: seal-spin 42s linear infinite;
+}
+.not-found-seal .seal-center-1 {
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  fill: rgba(255,255,255,0.75);
+  text-anchor: middle;
+}
+.not-found-seal .seal-center-2 {
+  font-family: var(--font-display), 'Roboto Slab', serif;
+  font-size: 30px;
+  font-weight: 500;
+  fill: var(--white);
+  text-anchor: middle;
+}
+.not-found-title {
+  font-family: var(--font-display), 'Roboto Slab', serif;
+  font-weight: 500;
+  font-size: clamp(32px, 4.4vw, 52px);
+  color: var(--white);
+  line-height: 1.15;
+  max-width: 18ch;
+}
+.not-found-text {
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--on-dark-soft);
+  max-width: 50ch;
+}
+.not-found-inner .btn { margin-top: 36px; }
+
+@media (max-width: 760px) {
+  .not-found-seal { width: 110px; height: 110px; }
 }

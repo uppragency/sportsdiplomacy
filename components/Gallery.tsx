@@ -36,6 +36,17 @@ export default function Gallery() {
     };
   }, [openIndex, close, prev, next]);
 
+  // Precarcă poza următoare (și anterioară), ca tranziția cu săgețile să fie instant
+  useEffect(() => {
+    if (openIndex === null) return;
+    const nextPhoto = galleryPhotos[(openIndex + 1) % galleryPhotos.length];
+    const prevPhoto = galleryPhotos[(openIndex - 1 + galleryPhotos.length) % galleryPhotos.length];
+    [nextPhoto, prevPhoto].forEach((photo) => {
+      const img = new window.Image();
+      img.src = `/images/gallery/${photo.file}`;
+    });
+  }, [openIndex]);
+
   // Idee 13: cursor personalizat (lupă) la hover pe galerie — doar desktop
   const handleMouseEnter = () => {
     if (!window.matchMedia('(hover: none)').matches) setCursorActive(true);

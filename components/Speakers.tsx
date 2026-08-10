@@ -26,13 +26,18 @@ function slugify(name: string) {
 
 export default function Speakers() {
   const trackRef = useRef<HTMLUListElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const hasInteractedRef = useRef(false);
+  const isHoveredRef = useRef(false);
   const [index, setIndex] = useState(0);
   const [barWidthPct, setBarWidthPct] = useState(8);
   const [barOffsetPct, setBarOffsetPct] = useState(0);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
+  const [inView, setInView] = useState(false);
 
   const scrollByCard = (dir: 1 | -1) => {
+    hasInteractedRef.current = true;
     const track = trackRef.current;
     if (!track) return;
     const card = track.querySelector('li');
@@ -69,8 +74,51 @@ export default function Speakers() {
     };
   }, []);
 
+  // Rotire automată, foarte lentă — se oprește definitiv la orice interacțiune a vizitatorului
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const markInteracted = () => { hasInteractedRef.current = true; };
+    track.addEventListener('pointerdown', markInteracted);
+    track.addEventListener('wheel', markInteracted, { passive: true });
+    track.addEventListener('touchstart', markInteracted, { passive: true });
+    const onEnter = () => { isHoveredRef.current = true; };
+    const onLeave = () => { isHoveredRef.current = false; };
+    track.addEventListener('mouseenter', onEnter);
+    track.addEventListener('mouseleave', onLeave);
+    return () => {
+      track.removeEventListener('pointerdown', markInteracted);
+      track.removeEventListener('wheel', markInteracted);
+      track.removeEventListener('touchstart', markInteracted);
+      track.removeEventListener('mouseenter', onEnter);
+      track.removeEventListener('mouseleave', onLeave);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!sectionRef.current || !('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), { threshold: 0.3 });
+    io.observe(sectionRef.current);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!inView) return;
+    const timer = setInterval(() => {
+      if (hasInteractedRef.current || isHoveredRef.current) return;
+      const track = trackRef.current;
+      if (!track) return;
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      if (track.scrollLeft >= maxScroll - 4) return; // se oprește la capăt, nu reia de la zero
+      const card = track.querySelector('li');
+      const cardWidth = card ? card.getBoundingClientRect().width + 20 : 280;
+      track.scrollBy({ left: cardWidth, behavior: 'smooth' });
+    }, 4200);
+    return () => clearInterval(timer);
+  }, [inView]);
+
   return (
-    <section className="section section-dark" id="speakeri">
+    <section className="section section-dark" id="speakeri" ref={sectionRef}>
       <div className="container">
         <div className="section-head-row">
           <div>

@@ -4,10 +4,10 @@ import { useEffect, useMemo, useState } from 'react';
 import { speakers, mediaArticles } from '@/lib/data';
 
 const NAV_LINKS = [
-  { href: '#despre', label: 'Despre' },
-  { href: '#galerie', label: 'Galerie' },
-  { href: '#media', label: 'Media' },
-  { href: '#sponsori', label: 'Sponsori' },
+  { href: '/#despre', label: 'Despre' },
+  { href: '/#galerie', label: 'Galerie' },
+  { href: '/#media', label: 'Media' },
+  { href: '/#sponsori', label: 'Sponsori' },
 ];
 
 function slugify(name: string) {
@@ -114,7 +114,7 @@ export default function Header() {
     <>
       <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
         <div className="header-inner">
-          <a href="#top" className="logo">
+          <a href="/#top" className="logo">
             <span className="logo-word">Sports<em>Diplomacy</em></span>
           </a>
 
@@ -123,7 +123,7 @@ export default function Header() {
               <a
                 key={link.href}
                 href={link.href}
-                className={activeSection === link.href.slice(1) ? 'is-active' : ''}
+                className={activeSection === link.href.split('#')[1] ? 'is-active' : ''}
               >
                 {link.label}
               </a>
@@ -149,7 +149,7 @@ export default function Header() {
               </div>
             )}
 
-            <a href="#contact" className="nav-cta nav-cta-desktop">Contact</a>
+            <a href="/#contact" className="nav-cta nav-cta-desktop">Contact</a>
 
             <button
               className="nav-toggle"
@@ -175,13 +175,26 @@ export default function Header() {
             {link.label}
           </a>
         ))}
+        <button
+          className="mobile-search-trigger"
+          onClick={() => {
+            setNavOpen(false);
+            setSearchOpen(true);
+          }}
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <circle cx="11" cy="11" r="7" />
+            <path d="M21 21l-4.3-4.3" />
+          </svg>
+          Caută
+        </button>
         {SHOW_LANG_TOGGLE && (
           <div className="lang-toggle" role="group" aria-label="Limbă" style={{ display: 'flex' }}>
             <button className={lang === 'ro' ? 'is-active' : ''} onClick={() => setLang('ro')}>RO</button>
             <button className={lang === 'en' ? 'is-active' : ''} onClick={() => setLang('en')}>EN</button>
           </div>
         )}
-        <a href="#contact" className="nav-cta" onClick={() => setNavOpen(false)}>
+        <a href="/#contact" className="nav-cta" onClick={() => setNavOpen(false)}>
           Contact
         </a>
       </nav>

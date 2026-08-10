@@ -9,7 +9,6 @@ import Institutions from '@/components/Institutions';
 import Sponsors from '@/components/Sponsors';
 import CTA from '@/components/CTA';
 import Footer from '@/components/Footer';
-import CookieBanner from '@/components/CookieBanner';
 
 // Notă: ParticipationCard (cardul digital "Am participat") e scos temporar din pagină —
 // designul actual nu arăta bine, trebuie regândit un sistem mai bun. Componenta a rămas
@@ -31,7 +30,6 @@ export default function Home() {
         <CTA />
       </main>
       <Footer />
-      <CookieBanner />
     </>
   );
 }

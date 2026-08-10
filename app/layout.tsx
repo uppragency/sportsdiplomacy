@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Roboto, Roboto_Slab, Roboto_Mono } from 'next/font/google';
+import CookieBanner from '@/components/CookieBanner';
 import './globals.css';
 
 const robotoSlab = Roboto_Slab({
@@ -90,6 +91,7 @@ export default function RootLayout({
       <body>
         <a className="skip-link" href="#continut">Sari la conținut</a>
         {children}
+        <CookieBanner />
       </body>
     </html>
   );
