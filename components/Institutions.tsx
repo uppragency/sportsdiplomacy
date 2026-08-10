@@ -39,13 +39,15 @@ export default function Institutions() {
               <li className="institution-tile" key={inst.name}>
                 <div className="institution-logo-box">
                   {hasLogo ? (
-                    <Image
-                      src={`/images/institutions/${inst.file}`}
-                      alt={inst.name}
-                      fill
-                      sizes="120px"
-                      style={{ objectFit: 'contain' }}
-                    />
+                    <div className="institution-logo-inner">
+                      <Image
+                        src={`/images/institutions/${inst.file}`}
+                        alt={inst.name}
+                        fill
+                        sizes="96px"
+                        style={{ objectFit: 'contain' }}
+                      />
+                    </div>
                   ) : (
                     <span className="institution-placeholder" aria-hidden="true">
                       {initials(inst.name)}

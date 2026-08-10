@@ -661,6 +661,7 @@ h1, h2, h3, p, dl, dd, dt { margin: 0; }
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 18px;
+  justify-items: center;
 }
 .institution-tile {
   display: flex;
@@ -671,16 +672,23 @@ h1, h2, h3, p, dl, dd, dt { margin: 0; }
 }
 .institution-logo-box {
   position: relative;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  border-radius: var(--radius-md);
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
   background: var(--paper);
   border: 1px solid var(--paper-line);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 22px;
+  overflow: hidden;
   transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+.institution-logo-inner {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  bottom: 10px;
+  left: 10px;
 }
 .institution-tile:hover .institution-logo-box {
   border-color: rgba(29,81,153,0.3);
