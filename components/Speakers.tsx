@@ -106,7 +106,7 @@ export default function Speakers() {
                       alt={speaker.name}
                       fill
                       sizes="280px"
-                      style={{ objectFit: 'cover' }}
+                      style={{ objectFit: 'contain' }}
                     />
                   ) : (
                     <span className="speaker-initials" aria-hidden="true">
