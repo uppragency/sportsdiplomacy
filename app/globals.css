@@ -22,7 +22,7 @@
 
   /* Layout */
   --container-w: 1200px;
-  --header-h: 76px;
+  --header-h: 92px;
   --radius-sm: 6px;
   --radius-md: 14px;
   --radius-lg: 28px;
@@ -161,24 +161,29 @@ h1, h2, h3, p, dl, dd, dt { margin: 0; }
    ========================================================================== */
 .site-header {
   position: fixed;
-  inset: 0 0 auto 0;
-  height: var(--header-h);
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 1200px;
   z-index: 100;
-  background: transparent;
-  transition: background 0.35s ease, box-shadow 0.35s ease, height 0.3s ease;
+  border-radius: 999px;
+  background: rgba(43, 78, 153, 0.32);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 34px rgba(10, 2, 30, 0.28);
+  transition: background 0.35s ease, box-shadow 0.35s ease, top 0.35s ease;
 }
 .site-header.is-scrolled {
-  background: rgba(10, 2, 30, 0.86);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 1px 0 var(--dark-line);
-  height: 68px;
+  background: rgba(43, 78, 153, 0.5);
+  box-shadow: 0 14px 40px rgba(10, 2, 30, 0.4);
+  top: 14px;
 }
 
 .header-inner {
-  max-width: var(--container-w);
-  margin-inline: auto;
-  padding-inline: 24px;
   height: 100%;
+  padding: 13px 26px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -676,7 +681,7 @@ h1, h2, h3, p, dl, dd, dt { margin: 0; }
 }
 .institution-logo-box {
   position: relative;
-  width: 100%;
+  width: 50%;
   aspect-ratio: 1 / 1;
   border-radius: var(--radius-md);
   background: var(--paper);
@@ -959,14 +964,14 @@ h1, h2, h3, p, dl, dd, dt { margin: 0; }
 }
 
 @media (max-width: 760px) {
-  :root { --header-h: 64px; }
+  :root { --header-h: 82px; }
 
   .main-nav-desktop { display: none; }
 
   .main-nav-mobile {
     display: flex;
     position: fixed;
-    inset: 64px 0 0 0;
+    inset: calc(var(--header-h) + 4px) 0 0 0;
     background: rgba(10,2,30,0.98);
     backdrop-filter: blur(10px);
     flex-direction: column;

@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 
 const NAV_LINKS = [
   { href: '#despre', label: 'Despre' },
-  { href: '#speakeri', label: 'Speakeri' },
   { href: '#galerie', label: 'Galerie' },
   { href: '#media', label: 'Media' },
   { href: '#sponsori', label: 'Sponsori' },
