@@ -1,6 +1,7 @@
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
+import Program from '@/components/Program';
 import Speakers from '@/components/Speakers';
 import Gallery from '@/components/Gallery';
 import Media from '@/components/Media';
@@ -21,6 +22,7 @@ export default function Home() {
       <main id="continut">
         <Hero />
         <About />
+        <Program />
         <Speakers />
         <Gallery />
         <Media />

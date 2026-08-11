@@ -1,6 +1,11 @@
 import Image from 'next/image';
 import Reveal from './Reveal';
 import AnimatedNumber from './AnimatedNumber';
+import AnimatedIcon from './AnimatedIcon';
+import locationIconData from '@/lib/icons/location.json';
+import calendarIconData from '@/lib/icons/calendar.json';
+import badgeIconData from '@/lib/icons/badge.json';
+import noteIconData from '@/lib/icons/note.json';
 
 export default function About() {
   return (
@@ -40,45 +45,28 @@ export default function About() {
         <Reveal className="stat-cards">
           <div className="stat-card">
             <div className="stat-card-icon">
-              {/* Scut heraldic — Locație */}
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-                <path d="M12 3L19 6v6c0 5-3.5 8-7 9.5C8.5 20 5 17 5 12V6l7-3Z" />
-                <path d="M10 21v-5a2 2 0 0 1 2-2 2 2 0 0 1 2 2v5" />
-              </svg>
+              <AnimatedIcon animationData={locationIconData} size={20} />
             </div>
             <p className="stat-card-value">Palatul Parlamentului</p>
             <p className="stat-card-label">Locație</p>
           </div>
           <div className="stat-card">
             <div className="stat-card-icon">
-              {/* Fanion / banderolă heraldică — Dată */}
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-                <path d="M5 4h14v13l-3-2-2 2-2-2-2 2-2-2-3 2V4Z" />
-              </svg>
+              <AnimatedIcon animationData={calendarIconData} size={20} />
             </div>
             <p className="stat-card-value">24 septembrie 2024</p>
             <p className="stat-card-label">Dată</p>
           </div>
           <div className="stat-card">
             <div className="stat-card-icon">
-              {/* Coroniță de lauri — Speakeri */}
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M12 4c-3 3-4 8-2 15" />
-                <path d="M9 6.5c-1 1-1 2 0 3M8 9.5c-1 1-1 2 0 3M8 12.5c-1 1-1 2 0 3M9.2 15.3c-1 .5-1 1.5 0 2.4" />
-                <path d="M12 4c3 3 4 8 2 15" />
-                <path d="M15 6.5c1 1 1 2 0 3M16 9.5c1 1 1 2 0 3M16 12.5c1 1 1 2 0 3M14.8 15.3c1 .5 1 1.5 0 2.4" />
-              </svg>
+              <AnimatedIcon animationData={badgeIconData} size={20} />
             </div>
-            <p className="stat-card-value"><AnimatedNumber target={26} /></p>
+            <p className="stat-card-value"><AnimatedNumber target={27} /></p>
             <p className="stat-card-label">Speakeri și moderatori</p>
           </div>
           <div className="stat-card">
             <div className="stat-card-icon">
-              {/* Stea încadrată (estoile heraldică) — Context sportiv */}
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <circle cx="12" cy="12" r="8" />
-                <path d="M12 7.2l1.4 3 3.3.3-2.5 2.3.8 3.4L12 14.5l-2.9 1.7.7-3.4-2.4-2.3 3.2-.3L12 7.2Z" />
-              </svg>
+              <AnimatedIcon animationData={noteIconData} size={20} />
             </div>
             <p className="stat-card-value">EURO · JO · Esports</p>
             <p className="stat-card-label">Context sportiv 2024</p>

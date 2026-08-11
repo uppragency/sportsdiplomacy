@@ -498,6 +498,9 @@ h1, h2, h3, p, dl, dd, dt { margin: 0; }
   line-height: 1;
   cursor: pointer;
   transition: background 0.2s ease, border-color 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .carousel-nav-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.45); }
 .carousel-nav-btn:disabled { opacity: 0.3; cursor: default; }
@@ -680,8 +683,9 @@ h1, h2, h3, p, dl, dd, dt { margin: 0; }
 .institution-grid {
   margin-top: 44px;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 18px;
+  max-width: 760px;
 }
 .institution-tile {
   display: flex;
@@ -950,6 +954,9 @@ h1, h2, h3, p, dl, dd, dt { margin: 0; }
   color: var(--white);
   font-size: 16px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .lightbox-nav {
   position: absolute;
@@ -964,6 +971,9 @@ h1, h2, h3, p, dl, dd, dt { margin: 0; }
   font-size: 24px;
   line-height: 1;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .lightbox-prev { left: 20px; }
 .lightbox-next { right: 20px; }
@@ -1461,4 +1471,194 @@ html { scrollbar-color: var(--primary) rgba(10,2,30,0.08); scrollbar-width: thin
 
 @media (max-width: 760px) {
   .not-found-seal { width: 110px; height: 110px; }
+}
+
+/* ==========================================================================
+   Program / Agendă
+   ========================================================================== */
+.agenda-timeline {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-left: 2px solid var(--paper-line);
+  max-width: 780px;
+}
+.agenda-item {
+  position: relative;
+  padding: 22px 0 22px 32px;
+  margin-left: -2px;
+  border-left: 2px solid transparent;
+}
+.agenda-item::before {
+  content: "";
+  position: absolute;
+  left: -7px;
+  top: 28px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 2px solid var(--primary);
+}
+.agenda-item-panel::before {
+  background: var(--primary);
+}
+.agenda-item-break {
+  padding: 10px 0 10px 32px;
+  opacity: 0.75;
+}
+.agenda-item-break::before {
+  width: 7px; height: 7px; left: -4.5px; top: 18px;
+  border-color: var(--ink-soft);
+  background: var(--paper);
+}
+.agenda-time {
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.agenda-item-break .agenda-time { color: var(--ink-soft); font-weight: 500; }
+.agenda-title {
+  font-family: var(--font-display), 'Roboto Slab', serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--ink);
+  line-height: 1.35;
+}
+.agenda-item-break .agenda-title { font-size: 14px; font-style: italic; font-weight: 400; color: var(--ink-soft); }
+.agenda-note {
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 60ch;
+}
+.agenda-moderator {
+  margin-top: 12px;
+  font-size: 13.5px;
+  color: var(--ink);
+}
+.agenda-moderator span {
+  font-family: var(--font-mono), monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-right: 8px;
+}
+.agenda-speakers {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.agenda-speakers li {
+  font-size: 13px;
+}
+.agenda-speakers a {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--paper-line);
+  background: var(--white);
+  color: var(--ink);
+  text-decoration: none;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.agenda-speakers a:hover { border-color: var(--primary); color: var(--primary); }
+.agenda-speaker-note {
+  color: var(--ink-soft);
+  font-size: 12px;
+  margin-left: 2px;
+}
+.agenda-qa {
+  margin-top: 12px;
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+
+.agenda-exhibition {
+  margin-top: 44px;
+  max-width: 480px;
+  border: 1px solid var(--primary);
+  border-radius: var(--radius-md);
+  padding: 26px 24px;
+  background: linear-gradient(165deg, rgba(29,81,153,0.05), transparent);
+}
+.agenda-exhibition-time {
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.agenda-exhibition h3 {
+  margin-top: 10px;
+  font-family: var(--font-display), 'Roboto Slab', serif;
+  font-weight: 500;
+  font-size: 19px;
+  color: var(--ink);
+}
+.agenda-exhibition p {
+  margin-top: 4px;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 760px) {
+  .agenda-item { padding-left: 24px; }
+  .agenda-item-break { padding-left: 24px; }
+  .agenda-title { font-size: 16px; }
+}
+
+/* ==========================================================================
+   Galerie — carusel orizontal (nu grid)
+   ========================================================================== */
+.gallery-carousel {
+  margin-top: 40px;
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 4px;
+  padding-bottom: 10px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.gallery-carousel::-webkit-scrollbar { display: none; }
+.gallery-carousel li {
+  flex: 0 0 auto;
+  width: clamp(240px, 32vw, 340px);
+  scroll-snap-align: start;
+}
+.gallery-carousel .gallery-thumb {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border: none;
+  padding: 0;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  cursor: zoom-in;
+  background: var(--dark);
+}
+.gallery-carousel .gallery-thumb:hover img { transform: scale(1.06); }
+
+/* Butoane navigare — fundal albastru solid, funcționează pe orice culoare de secțiune */
+.carousel-nav-btn-light {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+.carousel-nav-btn-light:hover { background: var(--secondary); border-color: var(--secondary); }
+.carousel-nav-btn-light:disabled { opacity: 0.35; }
+
+@media (max-width: 760px) {
+  .gallery-carousel li { width: 78vw; }
 }

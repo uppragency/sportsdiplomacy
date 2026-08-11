@@ -8,7 +8,6 @@ const institutions = [
   { name: 'Ministerul Afacerilor Externe', file: 'mae.png' },
   { name: 'Comitetul Olimpic și Sportiv Român', file: 'cosr.png' },
   { name: 'Institutul Sportiv Român', file: 'isr.png' },
-  { name: 'Uniunea Europeană', file: 'ue.png' },
 ];
 
 function initials(name: string) {

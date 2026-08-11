@@ -13,6 +13,8 @@ const nextConfig = {
       { protocol: 'https', hostname: 'infocons.ro' },
       { protocol: 'https', hostname: 'www.oranoua.ro' },
       { protocol: 'https', hostname: 'foto.agerpres.ro' },
+      { protocol: 'https', hostname: 'financialintelligence.ro' },
+      { protocol: 'https', hostname: 'business-review.eu' },
     ],
   },
 };

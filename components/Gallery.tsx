@@ -3,12 +3,24 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Reveal from './Reveal';
+import AnimatedIcon from './AnimatedIcon';
+import closeIconData from '@/lib/icons/close.json';
+import arrowIconData from '@/lib/icons/arrow.json';
+import arrowLeftIconData from '@/lib/icons/arrowleft.json';
 import { galleryPhotos } from '@/lib/data';
 
 export default function Gallery() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [cursorActive, setCursorActive] = useState(false);
   const cursorRef = useRef<HTMLDivElement>(null);
+
+  // Carusel orizontal (nu grid)
+  const trackRef = useRef<HTMLUListElement>(null);
+  const [index, setIndex] = useState(0);
+  const [barWidthPct, setBarWidthPct] = useState(20);
+  const [barOffsetPct, setBarOffsetPct] = useState(0);
+  const [atStart, setAtStart] = useState(true);
+  const [atEnd, setAtEnd] = useState(false);
 
   const close = useCallback(() => setOpenIndex(null), []);
   const prev = useCallback(
@@ -59,6 +71,44 @@ export default function Gallery() {
     }
   };
 
+  // Logica caruselului (aceeași mecanică ca la Speakeri)
+  const scrollByCard = (dir: 1 | -1) => {
+    const track = trackRef.current;
+    if (!track) return;
+    const card = track.querySelector('li');
+    const cardWidth = card ? card.getBoundingClientRect().width : 300;
+    track.scrollBy({ left: dir * (cardWidth + 16), behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const update = () => {
+      const card = track.querySelector('li');
+      const cardWidth = card ? card.getBoundingClientRect().width + 16 : 300;
+      const i = Math.min(Math.max(Math.round(track.scrollLeft / cardWidth), 0), galleryPhotos.length - 1);
+      setIndex(i);
+
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      const widthPct = Math.max(8, (track.clientWidth / track.scrollWidth) * 100);
+      const travelPct = 100 - widthPct;
+      const scrollPct = maxScroll > 0 ? track.scrollLeft / maxScroll : 0;
+      setBarWidthPct(widthPct);
+      setBarOffsetPct(scrollPct * travelPct);
+      setAtStart(track.scrollLeft <= 4);
+      setAtEnd(track.scrollLeft >= maxScroll - 4);
+    };
+
+    update();
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    return () => {
+      track.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
+  }, []);
+
   return (
     <section className="section section-muted" id="galerie">
       {/* Idee 13: punctul cursorului custom */}
@@ -69,8 +119,37 @@ export default function Gallery() {
       </div>
 
       <div className="container">
-        <p className="eyebrow">Galerie foto</p>
-        <h2 className="section-title">Sports Diplomacy Conference, în imagini</h2>
+        <div className="section-head-row">
+          <div>
+            <p className="eyebrow">Galerie foto</p>
+            <h2 className="section-title">Sports Diplomacy Conference, în imagini</h2>
+          </div>
+          <div className="carousel-nav">
+            <span className="carousel-counter">
+              {String(index + 1).padStart(2, '0')} / {galleryPhotos.length}
+            </span>
+            <div className="carousel-nav-btns">
+              <button
+                type="button"
+                className="carousel-nav-btn carousel-nav-btn-light"
+                onClick={() => scrollByCard(-1)}
+                disabled={atStart}
+                aria-label="Poza anterioară"
+              >
+                <AnimatedIcon animationData={arrowLeftIconData} size={18} />
+              </button>
+              <button
+                type="button"
+                className="carousel-nav-btn carousel-nav-btn-light"
+                onClick={() => scrollByCard(1)}
+                disabled={atEnd}
+                aria-label="Poza următoare"
+              >
+                <AnimatedIcon animationData={arrowIconData} size={18} />
+              </button>
+            </div>
+          </div>
+        </div>
 
         <div
           onMouseEnter={handleMouseEnter}
@@ -78,37 +157,49 @@ export default function Gallery() {
           onMouseMove={handleMouseMove}
           className={cursorActive ? 'custom-cursor-active' : ''}
         >
-          <Reveal as="ul" className="gallery-grid">
-            {galleryPhotos.map((photo, i) => (
-              <li key={photo.file}>
-                <button
-                  type="button"
-                  className="gallery-thumb"
-                  onClick={() => setOpenIndex(i)}
-                  aria-label={`Deschide poza ${i + 1} din ${galleryPhotos.length}`}
-                >
-                  {/* Idee 12: blur-up la încărcare */}
-                  <span className="blurup-wrap" style={{ position: 'absolute', inset: 0 }}>
-                    <Image
-                      src={`/images/gallery/${photo.file}`}
-                      alt={photo.alt}
-                      fill
-                      sizes="(max-width: 760px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                      style={{ objectFit: 'cover' }}
-                      onLoad={(e) => e.currentTarget.classList.add('is-loaded')}
-                    />
-                  </span>
-                </button>
-              </li>
-            ))}
+          <Reveal>
+            <ul className="gallery-carousel" ref={trackRef}>
+              {galleryPhotos.map((photo, i) => (
+                <li key={photo.file}>
+                  <button
+                    type="button"
+                    className="gallery-thumb"
+                    onClick={() => setOpenIndex(i)}
+                    aria-label={`Deschide poza ${i + 1} din ${galleryPhotos.length}`}
+                  >
+                    {/* Idee 12: blur-up la încărcare */}
+                    <span className="blurup-wrap" style={{ position: 'absolute', inset: 0 }}>
+                      <Image
+                        src={`/images/gallery/${photo.file}`}
+                        alt={photo.alt}
+                        fill
+                        sizes="(max-width: 760px) 78vw, (max-width: 1024px) 42vw, 340px"
+                        style={{ objectFit: 'cover' }}
+                        onLoad={(e) => e.currentTarget.classList.add('is-loaded')}
+                      />
+                    </span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <div className="carousel-progress">
+              <div
+                className="carousel-progress-bar"
+                style={{ width: `${barWidthPct}%`, marginLeft: `${barOffsetPct}%` }}
+              />
+            </div>
           </Reveal>
         </div>
       </div>
 
       {openIndex !== null && (
         <div className="lightbox" role="dialog" aria-modal="true" aria-label="Vizualizare poză">
-          <button className="lightbox-close" onClick={close} aria-label="Închide">✕</button>
-          <button className="lightbox-nav lightbox-prev" onClick={prev} aria-label="Poza anterioară">‹</button>
+          <button className="lightbox-close" onClick={close} aria-label="Închide">
+            <AnimatedIcon animationData={closeIconData} size={18} />
+          </button>
+          <button className="lightbox-nav lightbox-prev" onClick={prev} aria-label="Poza anterioară">
+            <AnimatedIcon animationData={arrowLeftIconData} size={22} />
+          </button>
 
           <div className="lightbox-figure">
             <Image
@@ -121,7 +212,9 @@ export default function Gallery() {
             />
           </div>
 
-          <button className="lightbox-nav lightbox-next" onClick={next} aria-label="Poza următoare">›</button>
+          <button className="lightbox-nav lightbox-next" onClick={next} aria-label="Poza următoare">
+            <AnimatedIcon animationData={arrowIconData} size={22} />
+          </button>
 
           {/* Idee 4: bandă de thumbnail-uri */}
           <div className="lightbox-thumbs">

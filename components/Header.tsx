@@ -2,6 +2,8 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import { speakers, mediaArticles } from '@/lib/data';
+import AnimatedIcon from './AnimatedIcon';
+import searchIconData from '@/lib/icons/search.json';
 
 const NAV_LINKS = [
   { href: '/#despre', label: 'Despre' },
@@ -49,7 +51,7 @@ export default function Header() {
 
   // Idee 11: scroll-spy — evidențiază link-ul secțiunii curente
   useEffect(() => {
-    const sectionIds = ['despre', 'speakeri', 'galerie', 'media', 'institutii', 'sponsori', 'contact'];
+    const sectionIds = ['despre', 'program', 'speakeri', 'galerie', 'media', 'institutii', 'sponsori', 'contact'];
     const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
     if (!('IntersectionObserver' in window) || sections.length === 0) return;
 
@@ -136,10 +138,7 @@ export default function Header() {
               aria-label="Căutare"
               onClick={() => setSearchOpen(true)}
             >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <circle cx="11" cy="11" r="7" />
-                <path d="M21 21l-4.3-4.3" />
-              </svg>
+              <AnimatedIcon animationData={searchIconData} size={18} />
             </button>
 
             {SHOW_LANG_TOGGLE && (
@@ -182,10 +181,7 @@ export default function Header() {
             setSearchOpen(true);
           }}
         >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <circle cx="11" cy="11" r="7" />
-            <path d="M21 21l-4.3-4.3" />
-          </svg>
+          <AnimatedIcon animationData={searchIconData} size={17} />
           Caută
         </button>
         {SHOW_LANG_TOGGLE && (

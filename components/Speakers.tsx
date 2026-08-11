@@ -3,6 +3,9 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Reveal from './Reveal';
+import AnimatedIcon from './AnimatedIcon';
+import arrowIconData from '@/lib/icons/arrow.json';
+import arrowLeftIconData from '@/lib/icons/arrowleft.json';
 import { speakers } from '@/lib/data';
 
 const TITLE_WORDS = new Set(['ambasador', 'dr.', 'dr', 'e.s.', 'e.s']);
@@ -138,7 +141,7 @@ export default function Speakers() {
                 disabled={atStart}
                 aria-label="Speakerul anterior"
               >
-                ‹
+                <AnimatedIcon animationData={arrowLeftIconData} size={18} />
               </button>
               <button
                 type="button"
@@ -147,7 +150,7 @@ export default function Speakers() {
                 disabled={atEnd}
                 aria-label="Speakerul următor"
               >
-                ›
+                <AnimatedIcon animationData={arrowIconData} size={18} />
               </button>
             </div>
           </div>

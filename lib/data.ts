@@ -29,6 +29,7 @@ export const speakers: Speaker[] = [
   { name: 'Cristian Gheorghe', role: 'Fondator, Sports Business Academy', category: 'Oficial', photo: '/images/speakers/cristian-gheorghe.jpg' },
   { name: 'Florin Șari', role: 'Manager politici publice și responsabilitate socială, Federația Română de Fotbal', category: 'Oficial', photo: '/images/speakers/florin-sari.jpg' },
   { name: 'Ambasador Dr. Mohammed Abdulghani M. Khayat', role: 'Ambasadorul Regatului Arabiei Saudite în România', category: 'Diplomat', photo: '/images/speakers/ambasador-mohammed-khayat.jpg' },
+  { name: 'E.S. Alberto Rodriguez Goñi', role: 'Ambasador, Republica Orientală Uruguay în România', category: 'Diplomat' },
   { name: 'Cristian Jura', role: 'Invitat', category: 'Invitat' },
   { name: 'Ionuț Popa', role: 'Invitat', category: 'Invitat' },
   { name: 'Camelia Potec', role: 'Vicepreședinte Comitetul Executiv COSR, Președinte Federația Română de Natație', category: 'Sportiv', photo: '/images/speakers/camelia-potec.jpg' },
@@ -155,6 +156,26 @@ export const mediaArticles: MediaArticle[] = [
       'https://evz.ro/sports-diplomacy-conferinta-dedicata-sportivilor-nadia-comaneci-cei-mai-multi-dintre-sportivi-devin-fara-sa-stie-diplomati.html',
     publication: 'Evenimentul Zilei',
     date: '24 septembrie 2024',
+    type: 'presa',
+  },
+  {
+    slug: 'financialintelligence-romania-avanseaza',
+    title: 'România avansează cu Sports Diplomacy după succesul de la Jocurile Olimpice de la Paris',
+    image: 'https://financialintelligence.ro/wp-content/uploads/2024/10/sport.jpg',
+    sourceUrl:
+      'https://financialintelligence.ro/romania-avanseaza-cu-sports-diplomacy-dupa-succesul-de-la-jocurile-olimpice-de-la-paris/',
+    publication: 'Financial Intelligence',
+    date: '11 octombrie 2024',
+    type: 'presa',
+  },
+  {
+    slug: 'business-review-romania-advances',
+    title: 'Romania Advances Sports Diplomacy Following Success at Paris 2024 Olympics',
+    image: 'https://business-review.eu/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-03-at-2.47.39-PM-1.jpeg',
+    sourceUrl:
+      'https://business-review.eu/business/sports/romania-advances-sports-diplomacy-following-success-at-paris-2024-olympics-271241',
+    publication: 'Business Review',
+    date: '3 octombrie 2024',
     type: 'presa',
   },
   {
