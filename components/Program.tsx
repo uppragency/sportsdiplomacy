@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 import Reveal from './Reveal';
 
 function slugify(name: string) {
@@ -86,7 +89,21 @@ const agenda: AgendaItem[] = [
   },
 ];
 
+// Primul panel e deschis implicit, ca vizitatorul să înțeleagă imediat că se poate extinde
+const FIRST_PANEL_INDEX = agenda.findIndex((item) => item.type === 'panel');
+
 export default function Program() {
+  const [openIndexes, setOpenIndexes] = useState<Set<number>>(new Set([FIRST_PANEL_INDEX]));
+
+  const toggle = (i: number) => {
+    setOpenIndexes((prev) => {
+      const next = new Set(prev);
+      if (next.has(i)) next.delete(i);
+      else next.add(i);
+      return next;
+    });
+  };
+
   return (
     <section className="section section-muted" id="program">
       <div className="container">
@@ -97,32 +114,58 @@ export default function Program() {
           10 minute dedicate întrebărilor din public.
         </p>
 
-        <Reveal as="ul" className="agenda-timeline">
-          {agenda.map((item, i) => (
-            <li key={i} className={`agenda-item agenda-item-${item.type}`}>
-              <div className="agenda-time">{item.time}</div>
-              <div className="agenda-content">
-                <h3 className="agenda-title">{item.title}</h3>
-                {item.note && <p className="agenda-note">{item.note}</p>}
-                {item.moderator && (
-                  <p className="agenda-moderator">
-                    <span>Moderator</span> {item.moderator}
-                  </p>
-                )}
-                {item.speakers && (
-                  <ul className="agenda-speakers">
-                    {item.speakers.map((s) => (
-                      <li key={s.name}>
-                        <a href={`#speaker-${slugify(s.name)}`}>{s.name}</a>
-                        {s.note && <span className="agenda-speaker-note"> ({s.note})</span>}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-                {item.type === 'panel' && <p className="agenda-qa">10&apos; sesiune de întrebări și răspunsuri</p>}
-              </div>
-            </li>
-          ))}
+        <Reveal as="ul" className="agenda-list">
+          {agenda.map((item, i) => {
+            if (item.type !== 'panel') {
+              return (
+                <li key={i} className={`agenda-simple agenda-simple-${item.type}`}>
+                  <div className="agenda-simple-time">{item.time}</div>
+                  <div className="agenda-simple-content">
+                    <h3>{item.title}</h3>
+                    {item.note && <p>{item.note}</p>}
+                  </div>
+                </li>
+              );
+            }
+
+            const isOpen = openIndexes.has(i);
+            return (
+              <li key={i} className={`agenda-panel${isOpen ? ' is-open' : ''}`}>
+                <button
+                  type="button"
+                  className="agenda-panel-head"
+                  onClick={() => toggle(i)}
+                  aria-expanded={isOpen}
+                >
+                  <span className="agenda-panel-time">{item.time}</span>
+                  <h3>{item.title}</h3>
+                  <svg className="agenda-panel-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </button>
+                <div className="agenda-panel-body">
+                  <div className="agenda-panel-body-inner">
+                    {item.moderator && (
+                      <p className="agenda-moderator">
+                        <span>Moderator</span> {item.moderator}
+                      </p>
+                    )}
+                    {item.speakers && (
+                      <ul className="agenda-speakers">
+                        {item.speakers.map((s) => (
+                          <li key={s.name}>
+                            <a href={`#speaker-${slugify(s.name)}`}>{s.name}</a>
+                            {s.note && <span className="agenda-speaker-note"> ({s.note})</span>}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                    <p className="agenda-qa">10&apos; sesiune de întrebări și răspunsuri</p>
+                  </div>
+                </div>
+              </li>
+            );
+          })}
         </Reveal>
 
         <Reveal className="agenda-exhibition">
