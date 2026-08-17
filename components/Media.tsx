@@ -5,8 +5,10 @@ import Image from 'next/image';
 import Reveal from './Reveal';
 import { mediaArticles } from '@/lib/data';
 
+const PER_BATCH = 3; // 1 rând x 3 coloane
+
 export default function Media() {
-  const [shown, setShown] = useState(mediaArticles.length);
+  const [shown, setShown] = useState(Math.min(PER_BATCH, mediaArticles.length));
 
   // Idee 23: dacă un rezultat de căutare țintește un articol încă neafișat, îl arătăm
   useEffect(() => {
@@ -86,7 +88,7 @@ export default function Media() {
                 <button
                   type="button"
                   className="load-more-btn"
-                  onClick={() => setShown((s) => Math.min(s + 3, mediaArticles.length))}
+                  onClick={() => setShown((s) => Math.min(s + PER_BATCH, mediaArticles.length))}
                 >
                   Vezi mai multe articole
                 </button>
