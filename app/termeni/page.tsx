@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import LegalPageShell from '@/components/LegalPageShell';
 
 export const metadata: Metadata = {
@@ -9,34 +8,6 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <>
-      <section className="termeni" id="top">
-        <div className="termeni-media">
-          <Image
-            src="/images/gallery/poza15.jpg"
-            alt="Sesiune plenară Sports Diplomacy Conference în Sala Drepturilor Omului, Palatul Parlamentului"
-            fill
-            priority
-            sizes="50vh"
-            style={{
-              objectFit: 'cover',
-              objectPosition: '50% 35%',
-            }}
-          />
-          <div className="termeni-scrim" />
-        </div>
-
-        <div className="termeni-content">
-          <p className="eyebrow eyebrow-light">
-            Termeni și condiții — Sports Diplomacy Conference
-          </p>
-
-          <p className="termeni-lead">
-            Termenii și condițiile de utilizare a site-ului Sports Diplomacy Conference.
-          </p>
-        </div>
-      </section>
-
     <LegalPageShell title="Termeni și condiții" updated="24 septembrie 2024">
       <h2>1. Acceptarea termenilor</h2>
       <p>
@@ -93,7 +64,6 @@ export default function TermsPage() {
         Pentru întrebări legate de acești termeni, ne poți contacta la{' '}
         <a href="mailto:office@sportsdiplomacy.ro">office@sportsdiplomacy.ro</a>.
       </p>
-      
     </LegalPageShell>
   );
 }
