@@ -28,7 +28,7 @@ export default function TermsPage() {
       </p>
   </section>
 
-    <LegalPageShell title="Termeni și condiții" updated="24 septembrie 2024">
+    <LegalPageShell title="Termeni și condiții" updated="24 septembrie 2024" children={undefined}>
       <h2>1. Acceptarea termenilor</h2>
       <p>
         Prin accesarea și utilizarea acestui site, ești de acord cu termenii și condițiile de
