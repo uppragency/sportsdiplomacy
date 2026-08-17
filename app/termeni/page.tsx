@@ -8,6 +8,26 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
+    <section className="hero" id="top">
+    <div className="hero-media">
+      <Image
+        src="/images/gallery/poza15.jpg"
+        alt="Sesiune plenară Sports Diplomacy Conference în Sala Drepturilor Omului, Palatul Parlamentului"
+        fill
+        priority
+        sizes="10vw"
+        style={{ objectFit: 'cover', objectPosition: '50% 35%' }}
+      />
+      <div className="hero-scrim"></div>
+    </div>
+
+    <div className="hero-content">
+      <p className="eyebrow eyebrow-light">Termeni și condiții — Sports Diplomacy Conferenc</p>
+      <p className="hero-lead">
+      Termenii și condițiile de utilizare a site-ului Sports Diplomacy Conference.
+      </p>
+  </section>
+
     <LegalPageShell title="Termeni și condiții" updated="24 septembrie 2024">
       <h2>1. Acceptarea termenilor</h2>
       <p>
