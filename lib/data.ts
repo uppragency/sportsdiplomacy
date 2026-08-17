@@ -75,13 +75,14 @@ export type MediaArticle = {
 };
 
 // Articole reale de presă despre Sports Diplomacy Conference.
+// Thumbnail-urile folosesc poze locale din galerie (poza15 este rezervată secțiunii About).
 // Instagram/Facebook nu permit extragerea automată a pozei/titlului (robots blocked),
-// deci acele carduri folosesc o poză din galeria proprie ca fallback vizual.
+// deci acele carduri folosesc tot o poză din galeria proprie ca fallback vizual.
 export const mediaArticles: MediaArticle[] = [
   {
     slug: 'evz-interviu-isr',
     title: 'Conferința „Sports Diplomacy”. Interviu cu președintele Institutului Sportiv Român',
-    image: 'https://evz.ro/wp-content/uploads/2024/09/Conferinta-Sports-Diplomacy-1200x771.jpeg',
+    image: '/images/gallery/poza2.jpg',
     sourceUrl: 'https://evz.ro/conferinta-sports-diplomacy-interviu-cu-presedintele-institutului-sportiv-roman.html',
     publication: 'Evenimentul Zilei',
     date: '25 septembrie 2024',
@@ -90,8 +91,7 @@ export const mediaArticles: MediaArticle[] = [
   {
     slug: 'prosport-lipa-covaliu-comaneci',
     title: '„Diplomația Sportivă”, conferință cu Elisabeta Lipă și Mihai Covaliu. Ce mesaj a transmis Nadia Comăneci',
-    image:
-      'https://media.prosport.ro/UKc_6JndgBsyypzm017fkvMAgZs=/1320x743/smart/filters:format(jpeg)/https%3A%2F%2Fwww.prosport.ro%2Fwp-content%2Fuploads%2F2024%2F09%2F%E2%80%9EDiplomatia-Sportiva-conferinta-cu-Rlisabeta-Lipa-si-Mihai-Covaliu.-Ce-mesaj-a-transmis-Nadia-Comaneci.jpg',
+    image: '/images/gallery/poza3.jpg',
     sourceUrl:
       'https://www.prosport.ro/alte-sporturi/diplomatia-sportiva-conferinta-cu-elisabeta-lipa-si-mihai-covaliu-ce-mesaj-a-transmis-nadia-comaneci-19993952',
     publication: 'Prosport',
@@ -101,7 +101,7 @@ export const mediaArticles: MediaArticle[] = [
   {
     slug: 'ici-bucuresti',
     title: 'ICI București a participat la Conferința „Sports Diplomacy”',
-    image: 'https://ici.ro/media/images/sports-diplomacy.original.jpg',
+    image: '/images/gallery/poza6.jpg',
     sourceUrl: 'https://ici.ro/ro/evenimente/ici-bucuresti-a-participat-la-conferinta-sports-diplomacy/',
     publication: 'ICI București',
     date: '24 septembrie 2024',
@@ -110,7 +110,7 @@ export const mediaArticles: MediaArticle[] = [
   {
     slug: 'evz-moldova-europa',
     title: 'Sportul poate aduce Republica Moldova mai aproape de Europa. Conferința Sports Diplomacy',
-    image: 'https://evz.ro/wp-content/uploads/2024/09/4-Sports-diplomacy-1200x783.jpg',
+    image: '/images/gallery/poza7.jpg',
     sourceUrl:
       'https://evz.ro/sportul-poate-aduce-republica-moldova-mai-aproape-de-europa-conferinta-sports-diplomacy.html',
     publication: 'Evenimentul Zilei',
@@ -121,7 +121,7 @@ export const mediaArticles: MediaArticle[] = [
     slug: 'nineoclock-corlatean',
     title:
       'The Participation of the President of the Foreign Affairs Committee in the Romanian Senate, Senator Titus Corlățean, at the "Sports Diplomacy" Conference',
-    image: 'https://nineoclock.ro/wp-content/uploads/2024/09/sports-diplomacy-coperta-.jpeg',
+    image: '/images/gallery/poza8.jpg',
     sourceUrl:
       'https://nineoclock.ro/the-participation-of-the-president-of-the-foreign-affairs-committee-in-the-romanian-senate-senator-titus-corlatean-at-the-sports-diplomacy-conference/',
     publication: 'Nine O\u2019Clock',
@@ -131,7 +131,7 @@ export const mediaArticles: MediaArticle[] = [
   {
     slug: 'infocons-mierlea',
     title: 'Sorin Mierlea, Președintele InfoCons, participă la Conferința „Diplomația Sportivă”',
-    image: 'https://infocons.ro/wp-content/uploads/2024/09/SORIN-MIERLEA-Presedinte-InfoCons-1024x1024.webp',
+    image: '/images/gallery/poza10.jpg',
     sourceUrl:
       'https://infocons.ro/stiri-scurte/sorin-mierlea-presedintele-infocons-participa-la-conferinta-diplomatia-sportiva/',
     publication: 'InfoCons',
@@ -141,7 +141,7 @@ export const mediaArticles: MediaArticle[] = [
   {
     slug: 'oranoua-socaciu',
     title: 'Adrian Socaciu: Conferința „Sports Diplomacy”',
-    image: 'https://www.oranoua.ro/wp-content/uploads/2019/06/Adrian-Socaciu-300x200.jpg',
+    image: '/images/gallery/poza11.jpg',
     sourceUrl: 'https://www.oranoua.ro/adrian-socaciu-conferinta-sports-diplomacy/',
     publication: 'Ora Nouă',
     date: '25 septembrie 2024',
@@ -150,7 +150,7 @@ export const mediaArticles: MediaArticle[] = [
   {
     slug: 'agerpres-comaneci',
     title: 'Nadia Comăneci, la conferința Diplomația Sportivă: Mulți sportivi devin diplomați extraordinari fără să știe',
-    image: 'https://foto.agerpres.ro/storage/watermark/17672880.jpg',
+    image: '/images/gallery/poza12.jpg',
     sourceUrl:
       'https://agerpres.ro/sport/2024/09/24/nadia-comaneci-la-conferinta-diplomatia-sportiva-multi-sportivi-devin-diplomati-extraordinari-fara-s--1359746',
     publication: 'Agerpres',
@@ -160,7 +160,7 @@ export const mediaArticles: MediaArticle[] = [
   {
     slug: 'evz-sportivi-diplomati',
     title: 'Sports Diplomacy, conferința dedicată sportivilor. Nadia Comăneci: Cei mai mulți dintre sportivi devin, fără să știe, diplomați',
-    image: 'https://evz.ro/wp-content/uploads/2024/08/MzJjNzgyYjVkMDEzZGQ4ZjAzZDc5YWE5ZmQ5.thumb_.jpg',
+    image: '/images/gallery/poza13.jpg',
     sourceUrl:
       'https://evz.ro/sports-diplomacy-conferinta-dedicata-sportivilor-nadia-comaneci-cei-mai-multi-dintre-sportivi-devin-fara-sa-stie-diplomati.html',
     publication: 'Evenimentul Zilei',
@@ -170,7 +170,7 @@ export const mediaArticles: MediaArticle[] = [
   {
     slug: 'financialintelligence-romania-avanseaza',
     title: 'România avansează cu Sports Diplomacy după succesul de la Jocurile Olimpice de la Paris',
-    image: 'https://financialintelligence.ro/wp-content/uploads/2024/10/sport.jpg',
+    image: '/images/gallery/poza14.jpg',
     sourceUrl:
       'https://financialintelligence.ro/romania-avanseaza-cu-sports-diplomacy-dupa-succesul-de-la-jocurile-olimpice-de-la-paris/',
     publication: 'Financial Intelligence',
@@ -180,7 +180,7 @@ export const mediaArticles: MediaArticle[] = [
   {
     slug: 'business-review-romania-advances',
     title: 'Romania Advances Sports Diplomacy Following Success at Paris 2024 Olympics',
-    image: 'https://business-review.eu/wp-content/uploads/2024/10/WhatsApp-Image-2024-10-03-at-2.47.39-PM-1.jpeg',
+    image: '/images/gallery/poza16.jpg',
     sourceUrl:
       'https://business-review.eu/business/sports/romania-advances-sports-diplomacy-following-success-at-paris-2024-olympics-271241',
     publication: 'Business Review',
