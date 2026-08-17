@@ -8,6 +8,7 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
+    <>
     <section className="hero" id="top">
     <div className="hero-media">
       <Image
@@ -85,5 +86,6 @@ export default function TermsPage() {
         <a href="mailto:office@sportsdiplomacy.ro">office@sportsdiplomacy.ro</a>.
       </p>
     </LegalPageShell>
+    </>
   );
 }
