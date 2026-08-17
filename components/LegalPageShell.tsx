@@ -13,32 +13,6 @@ export default function LegalPageShell({
 }) {
   return (
     <>
-    <section className="termeni" id="top">
-        <div className="termeni-media">
-          <Image
-            src="/images/gallery/poza15.jpg"
-            alt="Sesiune plenară Sports Diplomacy Conference în Sala Drepturilor Omului, Palatul Parlamentului"
-            fill
-            priority
-            sizes="300px"
-            style={{
-              objectFit: 'cover',
-              objectPosition: '50% 35%',
-            }}
-          />
-          <div className="termeni-scrim" />
-        </div>
-
-        <div className="termeni-content">
-          <p className="eyebrow eyebrow-light">
-            Termeni și condiții — Sports Diplomacy Conference
-          </p>
-
-          <p className="termeni-lead">
-            Termenii și condițiile de utilizare a site-ului Sports Diplomacy Conference.
-          </p>
-        </div>
-      </section>
       <Header />
       <main id="continut">
         <section className="section section-light legal-page">
