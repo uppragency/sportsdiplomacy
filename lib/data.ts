@@ -43,6 +43,13 @@ export type GalleryPhoto = {
 export const galleryPhotos: GalleryPhoto[] = [
   { file: 'poza13.jpg', alt: 'Panel de discuții, Sports Diplomacy Conference, Palatul Parlamentului' },
   { file: 'poza14.jpg', alt: 'Mihai Covaliu și Adrian Socaciu, Sports Diplomacy Conference' },
+  { file: 'poza16.jpg', alt: 'Cor a cappella, intonarea Imnului Național, Sports Diplomacy Conference' },
+  { file: 'poza17.jpg', alt: 'Participanți în picioare, Sports Diplomacy Conference' },
+  { file: 'poza18.jpg', alt: 'Intervenție video în cadrul Panel 3, Sports Diplomacy Conference' },
+  { file: 'poza19.jpg', alt: 'Participanți la conferință, Sports Diplomacy Conference' },
+  { file: 'poza20.jpg', alt: 'Expoziția 110 ani de Olimpism în România, Palatul Parlamentului' },
+  { file: 'poza21.jpg', alt: 'Ambasadori la Panel 2, Sports Diplomacy Conference' },
+  { file: 'poza22.jpg', alt: 'Speakeri la conferință, Sports Diplomacy Conference' },
   { file: 'poza1.jpg', alt: 'Sports Diplomacy Conference, Palatul Parlamentului' },
   { file: 'poza2.jpg', alt: 'Sports Diplomacy Conference, Palatul Parlamentului' },
   { file: 'poza3.jpg', alt: 'Sports Diplomacy Conference, Palatul Parlamentului' },

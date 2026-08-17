@@ -15,8 +15,8 @@ export default function Footer() {
               <span className="logo-word">Sports<em>Diplomacy</em></span>
             </a>
             <p>
-              Conferința care aduce laolaltă diplomația și sportul, la Palatul Parlamentului.
-              Puterea sportului de a uni națiuni, într-un singur eveniment anual.
+              Locul în care sportul întâlnește diplomația. O platformă anuală de dialog,
+              cooperare și diplomație prin sport, găzduită la Palatul Parlamentului!
             </p>
           </div>
 

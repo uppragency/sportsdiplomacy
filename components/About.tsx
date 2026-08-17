@@ -16,25 +16,35 @@ export default function About() {
             <div className="mini-badge"><span className="dot"></span> Ediția 2024</div>
             <p className="eyebrow">Despre eveniment</p>
             <h2 className="section-title">
-              O întâlnire între diplomație și sport, la cel mai înalt nivel.
+              Diplomația prin sport, la cel mai înalt nivel.
             </h2>
             <p className="body-lg">
-              Conferința cu tema Sports Diplomacy a fost organizată în contextul celor mai
-              importante evenimente sportive ale anului: Campionatul European din Germania,
-              Jocurile Olimpice din Franța și decizia Comitetului Olimpic Internațional de a
-              organiza prima ediție a Jocurilor Olimpice de Esports.
+              Sports Diplomacy a creat la București un spațiu de dialog dedicat rolului
+              sportului ca instrument de diplomație, cooperare internațională și apropiere
+              între națiuni.
             </p>
             <p className="body-md">
-              Evenimentul a reunit la aceeași masă reprezentanți importanți ai administrației
-              publice centrale, corpul diplomatic acreditat la București, federațiile sportive
-              naționale, sportivi, mediul privat, societatea civilă și mass-media.
+              Ediția din 2024 a avut loc într-un an definitoriu pentru sportul internațional,
+              marcat de Campionatul European de Fotbal din Germania, Jocurile Olimpice de la
+              Paris și decizia Comitetului Internațional Olimpic de a crea Jocurile Olimpice
+              de Esports.
+            </p>
+            <p className="body-md">
+              La aceeași masă s-au reunit reprezentanți ai administrației publice centrale, ai
+              corpului diplomatic acreditat la București, ai federațiilor sportive naționale și
+              internaționale, sportivi, reprezentanți ai mediului privat, ai societății civile
+              și ai mass-media.
+            </p>
+            <p className="body-md">
+              Un dialog despre modul în care sportul poate construi punți acolo unde politica,
+              uneori, întâlnește bariere.
             </p>
           </div>
 
           <div className="about-figure">
             <Image
-              src="/images/gallery/poza12.jpg"
-              alt="Participanți la Sports Diplomacy Conference, fotografie de grup, Palatul Parlamentului"
+              src="/images/gallery/poza15.jpg"
+              alt="Sala de conferințe, Sports Diplomacy Conference, Palatul Parlamentului"
               fill
               sizes="(max-width: 1024px) 100vw, 50vw"
               style={{ objectFit: 'cover' }}

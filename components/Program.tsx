@@ -28,19 +28,19 @@ const agenda: AgendaItem[] = [
   {
     time: '09:00 – 09:05',
     type: 'session',
-    title: 'Discurs de bun-venit',
+    title: 'Cuvânt de bun-venit',
     note: 'Tudor Oancea, co-organizator, Comisia pentru politică externă din Senat · Intonarea Imnului Național a cappella – Opera Română',
   },
   {
     time: '09:10 – 09:15',
     type: 'session',
-    title: 'Discurs de deschidere a evenimentului',
+    title: 'Cuvânt de deschidere a evenimentului',
     note: 'Titus Corlățean, președinte Comisia pentru politică externă din Senat, și Bogdan Matei, președinte Comisia pentru tineret și sport din Senat',
   },
   {
     time: '09:15 – 10:15',
     type: 'panel',
-    title: 'Panel 1 — România pe harta diplomației sportive',
+    title: 'Panel 1 — România și diplomația prin sport',
     moderator: 'Cristina Herea, jurnalist Romania TV',
     speakers: [
       { name: 'Bogdan Matei' },
@@ -54,7 +54,7 @@ const agenda: AgendaItem[] = [
   {
     time: '10:30 – 11:30',
     type: 'panel',
-    title: 'Panel 2 — Sportul ca instrument diplomatic',
+    title: 'Panel 2 — Sportul ca instrument de diplomație și cooperare internațională',
     moderator: 'Andrei Țărnea, director general comunicare și diplomație publică, MAE',
     speakers: [
       { name: 'Titus Corlățean' },
@@ -69,7 +69,7 @@ const agenda: AgendaItem[] = [
   {
     time: '11:45 – 12:45',
     type: 'panel',
-    title: 'Panel 3 — Sportul ca brand de țară',
+    title: 'Panel 3 — Sportul, identitatea și brandul de țară',
     moderator: 'Alexandru Coita, diplomat și analist politic',
     speakers: [
       { name: 'Nadia Comăneci', note: 'video' },
@@ -110,8 +110,7 @@ export default function Program() {
         <p className="eyebrow">Agenda evenimentului</p>
         <h2 className="section-title">Programul conferinței</h2>
         <p className="body-md">
-          24 septembrie 2024, Palatul Parlamentului. Fiecare panel are moderator, invitați și
-          10 minute dedicate întrebărilor din public.
+          24 septembrie 2024, Palatul Parlamentului.
         </p>
 
         <Reveal as="ul" className="agenda-list">
