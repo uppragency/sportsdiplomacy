@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Roboto, Roboto_Slab, Roboto_Mono } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import CookieBanner from '@/components/CookieBanner';
 import './globals.css';
 
@@ -92,6 +93,7 @@ export default function RootLayout({
         <a className="skip-link" href="#continut">Sari la conținut</a>
         {children}
         <CookieBanner />
+        <Analytics />
       </body>
     </html>
   );
